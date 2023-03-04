@@ -6,6 +6,11 @@ jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
+    if:
+      contains('
+      refs/heads/master
+      refs/heads/develop
+      ', github.ref)
     strategy:
       fail-fast: false
       matrix:
