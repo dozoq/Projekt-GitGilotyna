@@ -4,30 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+namespace Code.Player
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float       speed = 10.0f;
-    [SerializeField] private Vector2     moveVector;
-    // Start is called before the first frame update
-    void Start()
+    public class Player : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        public                   float       GetMoveVelocityX => moveVector.x;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private float       speed = 10.0f;
+        [SerializeField] private Vector2     moveVector;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
 
-    private void FixedUpdate()
-    {
-        transform.Translate(moveVector * (speed * Time.fixedDeltaTime));
-    }
+        // Update is called once per frame
+        void Update()
+        {
 
-    public void Move(InputAction.CallbackContext ctx)
-    {
-        moveVector = ctx.ReadValue<Vector2>();
+        }
+
+        private void FixedUpdate()
+        {
+            transform.Translate(moveVector * (speed * Time.fixedDeltaTime));
+        }
+
+        public void Move(InputAction.CallbackContext ctx)
+        {
+            moveVector = ctx.ReadValue<Vector2>();
+        }
     }
 }
