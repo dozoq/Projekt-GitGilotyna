@@ -764,9 +764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc68c66059a2c5b4b899c53e7ee79283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
   speed: 10
-  moveVector: {x: 0, y: 0}
+  spriteTransform: {fileID: 1245801493}
 --- !u!4 &588560453
 Transform:
   m_ObjectHideFlags: 0
@@ -838,11 +837,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588560451}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -850,7 +849,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &588560456
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1348,7 +1347,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
@@ -1386,7 +1417,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1245801493}
   - component: {fileID: 1245801494}
-  - component: {fileID: 1245801495}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -1462,18 +1492,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1245801495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245801492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838dff2d4418431aad28ab48d1498f56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1262655710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1820,7 +1838,7 @@ GameObject:
   - component: {fileID: 1325334597}
   - component: {fileID: 1325334596}
   - component: {fileID: 1325334595}
-  - component: {fileID: 1325334594}
+  - component: {fileID: 1325334598}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Untagged
@@ -1865,20 +1883,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1325334594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325334591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9679e68a0f1144e79c664d9a11ca121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  target: {fileID: 588560453}
 --- !u!114 &1325334595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1895,7 +1899,7 @@ MonoBehaviour:
   radius: 0.6
   height: 2
   canMove: 1
-  maxSpeed: 10
+  maxSpeed: 3
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -1914,7 +1918,7 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 2.13
   pickNextWaypointDist: 1.2
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
@@ -1975,6 +1979,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.662534}
   m_EdgeRadius: 0
+--- !u!114 &1325334598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325334591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74eb0beb82d061146ba982c63163a0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteTransform: {fileID: 1775902915}
+  aiCtx:
+    rigidbody2D: {fileID: 1325334592}
+    currentWaypoint: 0
+    nextWaypointDistance: 3
+    speed: 200
+    reachedEndOfPath: 0
+    target: {fileID: 588560453}
+    seeker: {fileID: 1325334596}
 --- !u!1 &1334315333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,7 +2565,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1775902915}
   - component: {fileID: 1775902916}
-  - component: {fileID: 1775902917}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -2616,19 +2640,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1775902917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775902914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfeb424abe1ed94ea7e646b4ff76afc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: {fileID: 0}
 --- !u!1 &1867857981
 GameObject:
   m_ObjectHideFlags: 0
