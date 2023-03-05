@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Linq;
 using Pathfinding;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Code.Enemy
 {
@@ -13,12 +14,18 @@ namespace Code.Enemy
     {
         public Rigidbody2D rigidbody2D;
         public Path        path;
+        public Transform   target;
+        public Seeker      seeker;
+        public LayerMask   playerLayerMask;
         public int         currentWaypoint;
         public int         nextWaypointDistance;
         public float       speed;
+        public float       maxRandomPathDistance;
+        public float       searchRange;
+        public float       timeToNextSearchPath;
+        public float       memoryTime;
+        public string      AIType;
         public bool        reachedEndOfPath;
-        public Transform   target;
-        public Seeker      seeker;
     }
     public abstract class AIType
     {
@@ -57,9 +64,9 @@ namespace Code.Enemy
         }
     }
 
-    public class StandardSeeker : AIType
+    public class StandardChaser : AIType
     {
-        public override string Name => "StandardSeeker";
+        public override string Name => "StandardChaser";
         public override AIContext CTX
         {
             get => ctx;
@@ -122,6 +129,113 @@ namespace Code.Enemy
                 ctx.currentWaypoint = 0;
             }
         }
+    }
+
+    public class StandardSeeker : AIType
+    {
+        public override string Name => "StandardSeeker";
+        public override AIContext CTX
+        {
+            get => ctx;
+            set => ctx = value;
+        }
+        private AIContext ctx;
+        private float     waitTime = 0;
+        private float     memoTime = 0;
+
+        public override void      Start()
+        {
+            
+        }
+
+        public override void      Process()
+        {
+            if(ctx.path == null || ctx.path.vectorPath == null) return;
+
+            if (ctx.currentWaypoint >= ctx.path.vectorPath.Count)
+            {
+                ctx.reachedEndOfPath = true;
+                return;
+            }
+            else
+            {
+                ctx.reachedEndOfPath = false;
+            }
+
+            Vector2 direction = ((Vector2)ctx.path.vectorPath[ctx.currentWaypoint] - ctx.rigidbody2D.position)
+                .normalized;
+            Vector2 force = direction * (ctx.speed * Time.deltaTime);
+
+            ctx.rigidbody2D.AddForce(force);
+            
+            float distance = Vector2.Distance(ctx.rigidbody2D.position, ctx.path.vectorPath[ctx.currentWaypoint]);
+
+            if (distance < ctx.nextWaypointDistance)
+            {
+                ctx.currentWaypoint++;
+            }
+        }
+
+        public override void      Reapeat()
+        {
+            UpdatePath();
+        }
+        
+        public void UpdatePath()
+        {
+            if(!ctx.seeker.IsDone()) return;
+            if (ctx.target != null)
+                ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, OnPathCompleted);
+            else if(waitTime > ctx.timeToNextSearchPath)
+            {
+                waitTime = 0;
+                var position = DesignateNearTransformAtRandom();
+                ctx.seeker.StartPath(ctx.rigidbody2D.position, position, OnPathCompleted);  
+            }
+
+            waitTime++;
+            SearchIfTargetIsInRange();
+        }
+
+        public void SearchIfTargetIsInRange()
+        {
+            var hits = Physics2D.CircleCastAll(ctx.rigidbody2D.position, ctx.searchRange, Vector2.zero, ctx.playerLayerMask.value);
+
+            var hit = hits.FirstOrDefault(x => x.collider.CompareTag("Player") || x.collider.CompareTag("NPC"));
+            if(hit.transform != null)
+            {
+                ctx.target = hit.transform;
+                memoTime   = 0;
+            }
+            else if (memoTime >= ctx.memoryTime)
+            {
+                memoTime   = 0;
+                ctx.target = null;
+                ctx.seeker.CancelCurrentPathRequest();
+            }
+            else
+            {
+                memoTime++;
+            }
+        }
+
+        public Vector3 DesignateNearTransformAtRandom()
+        {
+            var newPosition = ctx.rigidbody2D.position;
+            newPosition.x = Random.Range(newPosition.x - ctx.maxRandomPathDistance /2, newPosition.y + ctx.maxRandomPathDistance/2);
+            newPosition.y = Random.Range(newPosition.y - ctx.maxRandomPathDistance /2, newPosition.y + ctx.maxRandomPathDistance/2);
+            return newPosition;
+        }
+
+        private void OnPathCompleted(Path newPath)
+        {
+            if (!newPath.error)
+            {
+                ctx.path            = newPath;
+                ctx.currentWaypoint = 0;
+            }
+        }
+
     }
 
     public static class EnemyAIFactory

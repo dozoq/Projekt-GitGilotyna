@@ -10,7 +10,6 @@ namespace Code.Enemy
     {
         [SerializeField] private Transform      spriteTransform;
         [SerializeField] private AIContext      aiCtx;
-        private const            string         AITypeString = "StandardSeeker";
         private                  AIPath         path;
         private                  DirectionRotor rotor;
         private                  AIType         ai;
@@ -23,7 +22,7 @@ namespace Code.Enemy
         {
             path   = GetComponent<AIPath>();
             rotor  = new DirectionRotor();
-            ai     = EnemyAIFactory.GetAI(AITypeString);
+            ai     = EnemyAIFactory.GetAI(aiCtx.AIType);
             ai.CTX = aiCtx;
             ai.Start();
             InvokeRepeating("AIRepeating", 0f, 0.5f);
@@ -40,10 +39,11 @@ namespace Code.Enemy
         
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             rotor.SetDirectionByFlippingSprite(spriteTransform, path.desiredVelocity.x);
             ai.Process();
+            AdditionalDebugFunctions.DrawCircle(transform.position, aiCtx.searchRange, 16, Color.grey);
         }
     }
 }
