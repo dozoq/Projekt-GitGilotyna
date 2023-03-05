@@ -1996,18 +1996,7 @@ MonoBehaviour:
     rigidbody2D: {fileID: 1325334592}
     target: {fileID: 588560453}
     seeker: {fileID: 1325334596}
-    playerLayerMask:
-      serializedVersion: 2
-      m_Bits: 128
-    currentWaypoint: 0
-    nextWaypointDistance: 3
-    speed: 200
-    maxRandomPathDistance: 10
-    searchRange: 10
-    timeToNextSearchPath: 10
-    memoryTime: 5
-    AIType: StandardSeeker
-    reachedEndOfPath: 0
+    data: {fileID: 11400000, guid: 7ecad0214367f5e49883d253de39c438, type: 2}
 --- !u!1 &1334315333
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,59 +3,127 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using Code.Utilities;
 using Pathfinding;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Timer = Code.Utilities.Timer;
 
 namespace Code.Enemy
 {
     [Serializable]
     public struct AIContext
     {
-        public Rigidbody2D rigidbody2D;
-        public Path        path;
-        public Transform   target;
-        public Seeker      seeker;
-        public LayerMask   playerLayerMask;
-        public int         currentWaypoint;
-        public int         nextWaypointDistance;
-        public float       speed;
-        public float       maxRandomPathDistance;
-        public float       searchRange;
-        public float       timeToNextSearchPath;
-        public float       memoryTime;
-        public string      AIType;
-        public bool        reachedEndOfPath;
+        public  Rigidbody2D rigidbody2D;
+        public  Path        path;
+        public  Transform   target;
+        public  Seeker      seeker;
+        public  AIData      data;
+        internal bool        reachedEndOfPath;        
+        internal int currentWaypoint;
     }
     public abstract class AIType
     {
         public abstract string    Name { get; }
-        public abstract AIContext CTX  { get; set; }
-        public abstract void      Start();
-        public abstract void      Process();
-        public abstract void      Reapeat();
-    }
-
-    public class DebugSeeker : AIType
-    {
-        public override string    Name => "DebugSeeker";
-        public override AIContext CTX
-        {
+        /// <summary>
+        /// Shared context of AI data
+        /// </summary>
+        public virtual AIContext CTX {
             get => ctx;
             set => ctx = value;
         }
-        private         AIContext ctx;
-        
+        protected  AIContext ctx;
 
+        /// <summary>
+        /// Launches when the entity call own start method
+        /// </summary>
+        public virtual void Start()
+        {
+            return;
+        }
+
+        /// <summary>
+        /// Every physics frame update, used for calculate AI movement logic
+        /// </summary>
+        public virtual void Process() {
+            if(ctx.path == null) return;
+
+            if(IsPathFinished()) return;
+
+            Vector2 force = CalculateDirectionAndForce();
+
+            ctx.rigidbody2D.AddForce(force);
+            
+            HandleWaypointReach();
+        }
+
+        /// <summary>
+        /// Determines when the path is completed
+        /// </summary>
+        /// <returns>true if path is completed, false in every other situation</returns>
+        private bool IsPathFinished()
+        {
+            if (ctx.currentWaypoint >= ctx.path.vectorPath.Count)
+            {
+                return ctx.reachedEndOfPath = true;
+            }
+            else
+            {
+                return ctx.reachedEndOfPath = false;
+            }
+        }
+        /// <summary>
+        /// Handles changing waypoints to new when current is reached
+        /// </summary>
+        private void HandleWaypointReach()
+        {
+            float distance = Vector2.Distance(ctx.rigidbody2D.position, ctx.path.vectorPath[ctx.currentWaypoint]);
+
+            if (distance < ctx.data.nextWaypointDistance)
+            {
+                ctx.currentWaypoint++;
+            }
+        }
+        /// <summary>
+        /// Calculates Direction by substracting current position from waypoint position and normalizing, then uses it to calculate force vector
+        /// </summary>
+        /// <returns>Vector2 representing force in direction of waypoint</returns>
+        private Vector2 CalculateDirectionAndForce()
+        {
+            Vector2 direction = ((Vector2)ctx.path.vectorPath[ctx.currentWaypoint] - ctx.rigidbody2D.position)
+                .normalized;
+            return direction * (ctx.data.speed * Time.deltaTime);
+        }
+        /// <summary>
+        /// Callback function that handles path changing
+        /// </summary>
+        /// <param name="newPath"></param>
+        protected virtual void OnPathCompleted(Path newPath)
+        {
+            if (!newPath.error)
+            {
+                ctx.path            = newPath;
+                ctx.currentWaypoint = 0;
+            }
+        }
+
+        /// <summary>
+        /// exposes access to InvokeRepeating in base entity
+        /// </summary>
+        public virtual void Reapeat()
+        {
+            return;
+        }
+    }
+
+    public sealed class DebugSeeker : AIType
+    {
+        public override string    Name => "DebugSeeker";
         // ReSharper disable Unity.PerformanceAnalysis
         public override void Process()
         {
             Debug.Log("Debug Enemy AI Processing");
-        }
-
-        public override void Reapeat()
-        {
-            return;
         }
 
         public override void Start()
@@ -67,49 +135,7 @@ namespace Code.Enemy
     public class StandardChaser : AIType
     {
         public override string Name => "StandardChaser";
-        public override AIContext CTX
-        {
-            get => ctx;
-            set => ctx = value;
-        }
-        private AIContext ctx;
-
-        public override void Start()
-        {
-            return;
-        }
-        
-        
-
-        public override void Process()
-        {
-            if(ctx.path == null) return;
-
-            if (ctx.currentWaypoint >= ctx.path.vectorPath.Count)
-            {
-                ctx.reachedEndOfPath = true;
-                return;
-            }
-            else
-            {
-                ctx.reachedEndOfPath = false;
-            }
-
-            Vector2 direction = ((Vector2)ctx.path.vectorPath[ctx.currentWaypoint] - ctx.rigidbody2D.position)
-                .normalized;
-            Vector2 force = direction * (ctx.speed * Time.deltaTime);
-
-            ctx.rigidbody2D.AddForce(force);
-            
-            float distance = Vector2.Distance(ctx.rigidbody2D.position, ctx.path.vectorPath[ctx.currentWaypoint]);
-
-            if (distance < ctx.nextWaypointDistance)
-            {
-                ctx.currentWaypoint++;
-            }
-        }
-
-        public override void Reapeat()
+        public sealed override void Reapeat()
         {
             UpdatePath();
         }
@@ -118,65 +144,25 @@ namespace Code.Enemy
         public void UpdatePath()
         {
             if (ctx.seeker.IsDone())
-                ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, OnPathCompleted);
+                ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, base.OnPathCompleted);
         }
 
-        private void OnPathCompleted(Path newPath)
-        {
-            if (!newPath.error)
-            {
-                ctx.path            = newPath;
-                ctx.currentWaypoint = 0;
-            }
-        }
+        
     }
 
     public class StandardSeeker : AIType
     {
         public override string Name => "StandardSeeker";
-        public override AIContext CTX
-        {
-            get => ctx;
-            set => ctx = value;
-        }
-        private AIContext ctx;
-        private float     waitTime = 0;
-        private float     memoTime = 0;
+        private         Timer  waitForNewPathTimer;
+        private         Timer  lastSeenTargetTimer;
 
-        public override void      Start()
+        public sealed override void Start()
         {
-            
+            waitForNewPathTimer = new Timer(ctx.data.timeToNextSearchPath, StartNewRandomPath);
+            lastSeenTargetTimer = new Timer(ctx.data.memoryTime,           ResetPath);
         }
 
-        public override void      Process()
-        {
-            if(ctx.path == null || ctx.path.vectorPath == null) return;
-
-            if (ctx.currentWaypoint >= ctx.path.vectorPath.Count)
-            {
-                ctx.reachedEndOfPath = true;
-                return;
-            }
-            else
-            {
-                ctx.reachedEndOfPath = false;
-            }
-
-            Vector2 direction = ((Vector2)ctx.path.vectorPath[ctx.currentWaypoint] - ctx.rigidbody2D.position)
-                .normalized;
-            Vector2 force = direction * (ctx.speed * Time.deltaTime);
-
-            ctx.rigidbody2D.AddForce(force);
-            
-            float distance = Vector2.Distance(ctx.rigidbody2D.position, ctx.path.vectorPath[ctx.currentWaypoint]);
-
-            if (distance < ctx.nextWaypointDistance)
-            {
-                ctx.currentWaypoint++;
-            }
-        }
-
-        public override void      Reapeat()
+        public sealed override void Reapeat()
         {
             UpdatePath();
         }
@@ -186,56 +172,69 @@ namespace Code.Enemy
             if(!ctx.seeker.IsDone()) return;
             if (ctx.target != null)
                 ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, OnPathCompleted);
-            else if(waitTime > ctx.timeToNextSearchPath)
+            else
             {
-                waitTime = 0;
-                var position = DesignateNearTransformAtRandom();
-                ctx.seeker.StartPath(ctx.rigidbody2D.position, position, OnPathCompleted);  
+                waitForNewPathTimer.Update(1f);
             }
-
-            waitTime++;
-            SearchIfTargetIsInRange();
+            SearchIfTargetIsInVisibleRange();
         }
 
-        public void SearchIfTargetIsInRange()
+        private void StartNewRandomPath()
         {
-            var hits = Physics2D.CircleCastAll(ctx.rigidbody2D.position, ctx.searchRange, Vector2.zero, ctx.playerLayerMask.value);
+            var position = DesignateNearTransformAtRandom();
+            ctx.seeker.StartPath(ctx.rigidbody2D.position, position, OnPathCompleted); 
+        }
+        
+        /// <summary>
+        /// Search area to found if any mob is in visible range and handles the memorization of last target
+        /// </summary>
+        private void SearchIfTargetIsInVisibleRange()
+        {
+            var hits = Physics2D.CircleCastAll(ctx.rigidbody2D.position, ctx.data.searchRange, Vector2.zero, ctx.data.playerLayerMask.value);
 
             var hit = hits.FirstOrDefault(x => x.collider.CompareTag("Player") || x.collider.CompareTag("NPC"));
             if(hit.transform != null)
             {
                 ctx.target = hit.transform;
-                memoTime   = 0;
-            }
-            else if (memoTime >= ctx.memoryTime)
-            {
-                memoTime   = 0;
-                ctx.target = null;
-                ctx.seeker.CancelCurrentPathRequest();
+                lastSeenTargetTimer.Reset();
             }
             else
             {
-                memoTime++;
+                lastSeenTargetTimer.Update(1f);
             }
         }
 
-        public Vector3 DesignateNearTransformAtRandom()
+        private void ResetPath()
+        {
+            ctx.target = null;
+            ctx.seeker.CancelCurrentPathRequest();
+        }
+        /// <summary>
+        /// Calculate random position near entity position
+        /// </summary>
+        /// <returns>Vector3 that represents new position</returns>
+        private Vector3 DesignateNearTransformAtRandom()
         {
             var newPosition = ctx.rigidbody2D.position;
-            newPosition.x = Random.Range(newPosition.x - ctx.maxRandomPathDistance /2, newPosition.y + ctx.maxRandomPathDistance/2);
-            newPosition.y = Random.Range(newPosition.y - ctx.maxRandomPathDistance /2, newPosition.y + ctx.maxRandomPathDistance/2);
+            newPosition.x = GetRandomFloatWithOffset(newPosition.x, ctx.data.maxRandomPathDistance);
+            newPosition.y = GetRandomFloatWithOffset(newPosition.y, ctx.data.maxRandomPathDistance);
             return newPosition;
         }
-
-        private void OnPathCompleted(Path newPath)
+        /// <summary>
+        /// Gets random value between start - offset / 2 and start + offset / 2
+        /// </summary>
+        /// <param name="start">float that represents start value</param>
+        /// <param name="offset">float that represents value that will be substracted/added to start</param>
+        /// <returns></returns>
+        private float GetRandomFloatWithOffset(float start, float offset)
         {
-            if (!newPath.error)
-            {
-                ctx.path            = newPath;
-                ctx.currentWaypoint = 0;
-            }
+            return Random.Range(start - offset / 2, start + offset / 2);
         }
+    }
 
+    public class StandardRangeSeeker : StandardSeeker
+    {
+        public override string Name => "StandardRangeSeeker";
     }
 
     public static class EnemyAIFactory
@@ -243,7 +242,10 @@ namespace Code.Enemy
         private static Dictionary<string, Type> _aiTypes;
         private static bool _isInitialized = false;
 
-        
+        /// <summary>
+        /// Gathers all assemblies of enemy AI
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         private static void Initialize()
         {
             if(_isInitialized) return;
@@ -262,7 +264,13 @@ namespace Code.Enemy
 
             _isInitialized = true;
         }
-
+        
+        /// <summary>
+        /// Returns AI instance of given type
+        /// </summary>
+        /// <param name="aiTypeName">String representing AI which function should return</param>
+        /// <returns></returns>
+        /// <exception cref="IncorrectAIException">thrown when AI dont exists</exception>
         public static AIType GetAI(string aiTypeName)
         {
             Initialize();
@@ -274,11 +282,21 @@ namespace Code.Enemy
             }
             else
             {
-                throw new Exception();
+                throw new IncorrectAIException();
             }
         }
+
         
-        
+    }
+    
+    /// <summary>
+    /// Error thrown if factory don't have type of AIType which we want
+    /// </summary>
+    internal class IncorrectAIException : CodeExecption
+    {
+        public IncorrectAIException() : base(10001)
+        {
+        }
     }
 
 }

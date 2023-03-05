@@ -22,7 +22,8 @@ namespace Code.Enemy
         {
             path   = GetComponent<AIPath>();
             rotor  = new DirectionRotor();
-            ai     = EnemyAIFactory.GetAI(aiCtx.AIType);
+            ai     = EnemyAIFactory.GetAI(aiCtx.data.AIType);
+            EnemyAIFactory.GetAI("Stary Pijany");
             ai.CTX = aiCtx;
             ai.Start();
             InvokeRepeating("AIRepeating", 0f, 0.5f);
@@ -43,7 +44,6 @@ namespace Code.Enemy
         {
             rotor.SetDirectionByFlippingSprite(spriteTransform, path.desiredVelocity.x);
             ai.Process();
-            AdditionalDebugFunctions.DrawCircle(transform.position, aiCtx.searchRange, 16, Color.grey);
         }
     }
 }
