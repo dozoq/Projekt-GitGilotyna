@@ -5,7 +5,7 @@ namespace Code.Enemy
     /// <summary>
     /// Holder of AI Designer Access Data
     /// </summary>
-    [CreateAssetMenu(fileName = "AI_Data", menuName = "AI/AI Data")]
+    [CreateAssetMenu(fileName = "AI_Data", menuName = "Enemy/AI Data")]
     public class AIData : ScriptableObject
     {
         public LayerMask playerLayerMask;

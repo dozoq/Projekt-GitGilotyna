@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Code.Utilities
 {
@@ -10,10 +11,11 @@ namespace Code.Utilities
         private bool   IsRunning      { get; set; }
         private Action Callback       { get; set; }
 
-        public Timer(float repeatTime, Action callback)
+        public Timer(float repeatTime, Action callback, bool isRunning = true)
         {
-            Callback    = callback;
+            Callback       = callback;
             CallRepeatTime = repeatTime;
+            IsRunning      = isRunning;
         }
 
         public virtual void Start()
@@ -35,7 +37,7 @@ namespace Code.Utilities
         {
             if (!IsRunning) return;
             ActualTime += timePassed;
-            if (ActualTime <= CallRepeatTime)
+            if (ActualTime >= CallRepeatTime)
             {
                 Callback.Invoke();
                 ActualTime -= CallRepeatTime;
