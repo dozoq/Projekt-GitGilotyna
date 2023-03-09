@@ -2,7 +2,7 @@
 {
     public class StandardChaser : AIType
     {
-        public override string Name => "StandardChaser";
+        public override string Name => nameof(StandardChaser);
         public sealed override void Reapeat()
         {
             UpdatePath();

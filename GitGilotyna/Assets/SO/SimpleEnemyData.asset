@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 128
   nextWaypointDistance: 3
   speed: 3
-  maxRandomPathDistance: 10
+  maxRandomPathDistance: 50
   searchRange: 10
   timeToNextSearchPath: 5
   memoryTime: 5

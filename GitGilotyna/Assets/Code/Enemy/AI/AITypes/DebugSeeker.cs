@@ -4,7 +4,7 @@ namespace Code.Enemy.AITypes
 {
     public sealed class DebugSeeker : AIType
     {
-        public override string Name => "DebugSeeker";
+        public override string Name => nameof(DebugSeeker);
         // ReSharper disable Unity.PerformanceAnalysis
         public override void Process()
         {

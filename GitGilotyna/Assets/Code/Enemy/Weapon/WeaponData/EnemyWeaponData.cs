@@ -6,6 +6,8 @@ namespace Code.Enemy
     {
         public string weaponType;
         public int    attackDamage;
-        public float  attackFrequency;
+        public float  attackFrequency;        
+        public float attackRange;
+
     }
 }

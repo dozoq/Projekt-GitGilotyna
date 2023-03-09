@@ -6,7 +6,7 @@ namespace Code.Enemy.AITypes
 {
     public class StandardSeeker : AIType
     {
-        public override string Name => "StandardSeeker";
+        public override string Name => nameof(StandardSeeker);
         private         Timer  waitForNewPathTimer;
         private         Timer  lastSeenTargetTimer;
 
@@ -30,9 +30,7 @@ namespace Code.Enemy.AITypes
             else if(ctx.reachedEndOfPath)
             {
                 waitForNewPathTimer.Update(1f);
-                Debug.Log("Waiting");
             }
-            Debug.Log("Waiting");
             SearchIfTargetIsInVisibleRange();
         }
 

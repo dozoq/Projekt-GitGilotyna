@@ -38,13 +38,18 @@ namespace Code.Enemy
         {
             path                = GetComponent<AIPath>();
             rotor               = new DirectionRotor();
-            ai                  = EnemyAIFactory.Get(enemyCtx.aiData.AIType);
-            ai.CTX              = enemyCtx;
+            SetupSharedData();
+            ai.Start();
+            InvokeRepeating(nameof(AIRepeating), 0f, AIInvokeRepeatTime);
+            
+        }
+
+        private void SetupSharedData()
+        {
+            ai                  = EnemyAIFactory.Get(enemyCtx.aiData.aiType);
             enemyCtx.weapon     = EnemyWeaponFactory.Get(enemyCtx.weaponData.weaponType);
             enemyCtx.weapon.CTX = enemyCtx;
-            ai.Start();
-            InvokeRepeating("AIRepeating", 0f, AIInvokeRepeatTime);
-            
+            ai.CTX              = enemyCtx;
         }
 
         void AIRepeating()

@@ -4,8 +4,8 @@ using Code.Utilities;
 using Pathfinding;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 using Timer = Code.Utilities.Timer;
-//TODO Dodać resetowanie ścieżki jeśli pozycja się nie zmienia
 namespace Code.Enemy.AITypes
 {
     public abstract class AIType : IFactoryData
@@ -21,6 +21,7 @@ namespace Code.Enemy.AITypes
         protected EnemyContext ctx;
         private   Timer        attackCooldownTimer;
         private   RaycastHit2D objectInRange;
+        private   Vector2      lastPostition;
 
 
         /// <summary>
@@ -41,17 +42,16 @@ namespace Code.Enemy.AITypes
             Vector2 force = CalculateDirectionAndForce();
 
             ctx.rigidbody2D.AddForce(force);
-            
             HandleWaypointReach();
             attackCooldownTimer.Update(1f);
         }
 
         private void HandleAttack()
         {
-            if (IsEnemyIsInRange(out objectInRange)) //TODO rzuca null reference
+            var target = TakeEnemyIsInRange();
+            if (target != null)
             {
-                if (objectInRange.IsUnityNull()) return;
-                AttackIfValidTarget(objectInRange);
+                AttackIfValidTarget(target);
             }
         }
         /// <summary>
@@ -59,19 +59,29 @@ namespace Code.Enemy.AITypes
         /// </summary>
         /// <param name="objectInRange">target to check and attack</param>
         /// <exception cref="NotATargetException">throws if target is not valid</exception>
-        protected virtual void AttackIfValidTarget(RaycastHit2D objectInRange)
+        protected virtual void AttackIfValidTarget(Transform objectInRange)
         {
-            var target = objectInRange.transform.GetComponent<Target>();
-            if (target.IsUnityNull())
-            {
-                ctx.weapon.Attack(target);
-            }
-            else
-            {
-                throw new NotATargetException();
-            }
+            var target = objectInRange.GetComponent<Target>();
+            if (target == null) return;
+            ctx.weapon.Attack(target);
         }
-        
+
+        /// <summary>
+        /// Checks if target is in acceptable range from ctx data
+        /// </summary>
+        /// <param name="targetInRange">outputs object that is in range</param>
+        /// <returns></returns>
+        private Transform TakeEnemyIsInRange()
+        {
+            var targetInRange    = PhysicsUtils.GetClosestTarget(ctx.rigidbody2D.position, ctx.aiData.searchRange, ctx.aiData.playerLayerMask, ctx.aiData.tags);
+            var weaponData = ctx.weaponData;
+            if (Vector2.Distance(targetInRange.transform.position, ctx.rigidbody2D.position) < weaponData.attackRange)
+            {
+                return targetInRange.transform;
+            }
+            return null;
+        }
+
         /// <summary>
         /// Determines when the path is completed
         /// </summary>
@@ -88,6 +98,7 @@ namespace Code.Enemy.AITypes
                 return ctx.reachedEndOfPath = false;
             }
         }
+
         /// <summary>
         /// Handles changing waypoints to new when current is reached
         /// </summary>
@@ -100,6 +111,7 @@ namespace Code.Enemy.AITypes
                 ctx.currentWaypoint++;
             }
         }
+
         /// <summary>
         /// Calculates Direction by substracting current position from waypoint position and normalizing, then uses it to calculate force vector
         /// </summary>
@@ -110,6 +122,7 @@ namespace Code.Enemy.AITypes
                 .normalized;
             return direction * (ctx.aiData.speed * Time.deltaTime);
         }
+
         /// <summary>
         /// Callback function that handles path changing
         /// </summary>
@@ -130,35 +143,9 @@ namespace Code.Enemy.AITypes
         {
             return;
         }
-        
-        
-        /// <summary>
-        /// Checks if target is in acceptable range from ctx data
-        /// </summary>
-        /// <param name="targetInRange">outputs object that is in range</param>
-        /// <returns></returns>
-        private bool IsEnemyIsInRange(out RaycastHit2D targetInRange)
-        {
-            targetInRange              = GetClosestTarget();
-            var rangedWeaponData = ctx.weaponData as EnemyRangedWeaponData;
-            if (targetInRange.transform != null && Vector2.Distance(targetInRange.transform.position, ctx.rigidbody2D.position) < rangedWeaponData.attackRange)
-            {
-                
-                return true;
-            }
-            return false;
-        }
 
-        /// <summary>
-        /// Cast a circle for capturing objects
-        /// </summary>
-        /// <returns>RaycastHit2D that represent closets target with valid tag</returns>
-        protected RaycastHit2D GetClosestTarget()
-        {
-            var hits = Physics2D.CircleCastAll(ctx.rigidbody2D.position, ctx.aiData.searchRange, Vector2.zero, ctx.aiData.playerLayerMask.value);
 
-            return hits.FirstOrDefault(x => x.collider.CompareTag("Player") || x.collider.CompareTag("NPC"));
-        }
+        
     }
     
 }

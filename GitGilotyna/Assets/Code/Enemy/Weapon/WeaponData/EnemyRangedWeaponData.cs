@@ -7,6 +7,5 @@ namespace Code.Enemy
     public sealed class EnemyRangedWeaponData : EnemyWeaponData
     {
         public GameObject bulletPrefab;
-        public float      attackRange;
     }
 }
