@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Code.Utilities;
+﻿using Code.Utilities;
 using UnityEngine;
 
 namespace Code.Enemy.AITypes
@@ -17,7 +16,7 @@ namespace Code.Enemy.AITypes
             lastSeenTargetTimer = new Timer(ctx.aiData.memoryTime,           ResetTarget);
         }
 
-        public sealed override void Reapeat()
+        public sealed override void Repeat()
         {
             UpdatePath();
         }
@@ -33,19 +32,12 @@ namespace Code.Enemy.AITypes
             }
             SearchIfTargetIsInVisibleRange();
         }
-
-        private void StartNewRandomPath()
-        {
-            var position = DesignateNearTransformAtRandom();
-            ctx.seeker.StartPath(ctx.rigidbody2D.position, position, OnPathCompleted); 
-        }
-        
         /// <summary>
         /// Search area to found if any mob is in visible range and handles the memorization of last target
         /// </summary>
         private void SearchIfTargetIsInVisibleRange()
         {
-            var hit = GetClosestTarget();
+            var hit = PhysicsUtils.GetClosestTarget(ctx);
             HandleMemorization(hit);
         }
 
@@ -65,27 +57,6 @@ namespace Code.Enemy.AITypes
         private void ResetTarget()
         {
             ctx.target = null;
-        }
-        /// <summary>
-        /// Calculate random position near entity position
-        /// </summary>
-        /// <returns>Vector3 that represents new position</returns>
-        private Vector3 DesignateNearTransformAtRandom()
-        {
-            var newPosition = ctx.rigidbody2D.position;
-            newPosition.x = GetRandomFloatWithOffset(newPosition.x, ctx.aiData.maxRandomPathDistance);
-            newPosition.y = GetRandomFloatWithOffset(newPosition.y, ctx.aiData.maxRandomPathDistance);
-            return newPosition;
-        }
-        /// <summary>
-        /// Gets random value between start - offset / 2 and start + offset / 2
-        /// </summary>
-        /// <param name="start">float that represents start value</param>
-        /// <param name="offset">float that represents value that will be substracted/added to start</param>
-        /// <returns></returns>
-        private float GetRandomFloatWithOffset(float start, float offset)
-        {
-            return Random.Range(start - offset / 2, start + offset / 2);
         }
     }
 }

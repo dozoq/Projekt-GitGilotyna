@@ -16,9 +16,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   nextWaypointDistance: 3
-  speed: 3
+  maxChildrenCount: 5
+  speed: 5
   maxRandomPathDistance: 50
-  searchRange: 10
+  searchRange: 15
   timeToNextSearchPath: 5
   memoryTime: 5
-  AIType: StandardSeeker
+  aiType: Mother
+  useForce: 0
+  tags:
+  - Player
+  - NPC

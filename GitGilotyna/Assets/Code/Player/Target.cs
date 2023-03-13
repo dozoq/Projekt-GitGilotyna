@@ -17,7 +17,7 @@ namespace Code.Player
         public void TakeDamage(int amount)
         {
             health -= amount;
-            Debug.Log("Health available: "+health);
+            //Debug.Log("Health available: "+health);
         }
     }
 

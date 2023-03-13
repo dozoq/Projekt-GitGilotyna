@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b497412c0f4162a30b31c2e3cd1615, type: 3}
-  m_Name: SimpleBite
+  m_Script: {fileID: 11500000, guid: e95ced0eed8842fca6f1759ccba15956, type: 3}
+  m_Name: SpawnMothersWeapon
   m_EditorClassIdentifier: 
-  weaponType: SimpleWeapon
-  attackDamage: 10
-  attackFrequency: 3
-  attackRange: 25
+  weaponType: SpawnWeapon
+  attackDamage: 0
+  attackFrequency: 200
+  attackRange: 0
+  bulletPrefab: {fileID: 1738627592118019435, guid: 6b5b461ddc47e394aa3b920eab2f534f, type: 3}

@@ -54,7 +54,7 @@ namespace Code.Enemy
 
         void AIRepeating()
         {
-            ai.Reapeat();
+            ai.Repeat();
         }
 
         
