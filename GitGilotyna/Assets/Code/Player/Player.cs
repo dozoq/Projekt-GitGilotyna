@@ -1,33 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Code.Utilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+namespace Code.Player
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float       speed = 10.0f;
-    [SerializeField] private Vector2     moveVector;
-    // Start is called before the first frame update
-    void Start()
+    public class Player : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [SerializeField] private float          speed = 10.0f;
+        [SerializeField] private Transform      spriteTransform;
+        private                  Vector2        moveVector;
+        private                  DirectionRotor rotor;
+        private                  Rigidbody2D    rb;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            rb    = GetComponent<Rigidbody2D>();
+            rotor = new DirectionRotor();
+        }
 
-    private void FixedUpdate()
-    {
-        transform.Translate(moveVector * (speed * Time.fixedDeltaTime));
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            rotor.SetDirectionByFlippingSprite(spriteTransform, moveVector.x);
+        }
 
-    public void Move(InputAction.CallbackContext ctx)
-    {
-        moveVector = ctx.ReadValue<Vector2>();
+        private void FixedUpdate()
+        {
+            transform.Translate(moveVector * (speed * Time.fixedDeltaTime));
+        }
+
+        public void Move(InputAction.CallbackContext ctx)
+        {
+            moveVector = ctx.ReadValue<Vector2>();
+        }
     }
 }
