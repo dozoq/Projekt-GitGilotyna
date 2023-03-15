@@ -13,7 +13,6 @@ namespace Code.Enemy.AITypes
         private bool seenTarget = false;
         protected override void HandleAttack()
         {
-            Debug.Log(GetChildrenCount());
             if(GetChildrenCount() >= ctx.aiData.maxChildrenCount) return;
             ctx.weapon.Attack(null);
         }
@@ -48,7 +47,6 @@ namespace Code.Enemy.AITypes
         {
             var fleeDirection = GetFleeDirection();
             ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.rigidbody2D.position + fleeDirection, OnPathCompleted);
-            Debug.Log("Fleeing");
         }
 
         private Vector2 GetFleeDirection()

@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Code.Enemy.AITypes;
-using Code.Enemy.WeaponTypes;
 using Code.Utilities;
+using Code.Weapon.WeaponData;
+using Code.Weapon.WeaponTypes.Enemy;
 using Pathfinding;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace Code.Enemy
     {
         [SerializeField] internal Rigidbody2D     rigidbody2D;
         [SerializeField] internal AIData          aiData;
-        [SerializeField] internal EnemyWeaponData weaponData;
+        [SerializeField] internal WeaponData weaponData;
         [SerializeField] internal Transform       target;
         [SerializeField] internal Seeker          seeker;
         internal                  Path            path;
@@ -47,7 +46,8 @@ namespace Code.Enemy
         private void SetupSharedData()
         {
             ai                  = EnemyAIFactory.Get(enemyCtx.aiData.aiType);
-            enemyCtx.weapon     = EnemyWeaponFactory.Get(enemyCtx.weaponData.weaponType);
+            enemyCtx.weapon     = WeaponFactory.Get(enemyCtx.weaponData.weaponType) as EnemyWeapon;
+            if (enemyCtx.weapon == null) throw new Exception("Weapon Casting Went Wrong!");
             enemyCtx.weapon.CTX = enemyCtx;
             ai.CTX              = enemyCtx;
         }

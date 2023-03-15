@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Code.Enemy
+namespace Code.Weapon.WeaponData
 {
-    public abstract class EnemyWeaponData : ScriptableObject
+    public abstract class WeaponData : ScriptableObject
     {
         public string weaponType;
         public int    attackDamage;

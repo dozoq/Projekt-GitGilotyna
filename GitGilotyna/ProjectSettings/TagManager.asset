@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Mobs
     uniqueID: 3904201815
+    locked: 0
+  - name: WSUI
+    uniqueID: 356598297
     locked: 0

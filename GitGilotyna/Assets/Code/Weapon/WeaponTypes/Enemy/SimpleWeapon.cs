@@ -1,6 +1,6 @@
 ﻿using Code.Player;
 
-namespace Code.Enemy.WeaponTypes
+namespace Code.Weapon.WeaponTypes.Enemy
 {
     public class SimpleWeapon : EnemyWeapon
     {
