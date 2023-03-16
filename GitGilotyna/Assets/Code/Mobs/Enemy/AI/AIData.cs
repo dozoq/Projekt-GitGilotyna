@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Code.Enemy.AITypes;
+using Code.Utilities;
 using UnityEngine;
 
 namespace Code.Enemy
@@ -21,6 +25,5 @@ namespace Code.Enemy
         public string aiType = nameof(DebugSeeker);
         public bool useForce = false;
         public List<string> tags = new List<string>() { "Player", "NPC" };
-
     }
 }

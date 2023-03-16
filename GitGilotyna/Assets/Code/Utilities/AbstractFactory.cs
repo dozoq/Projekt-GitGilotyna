@@ -8,7 +8,7 @@ namespace Code.Utilities
 {
     public class AbstractFactory<T> where T : IFactoryData
     {
-        private static Dictionary<string, Type> _types;
+        public static Dictionary<string, Type> _types { get; private set; }
         private static bool                     _isInitialized = false;
 
         /// <summary>

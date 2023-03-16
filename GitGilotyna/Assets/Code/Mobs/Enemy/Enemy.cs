@@ -1,5 +1,6 @@
 using System;
 using Code.Enemy.AITypes;
+using Code.Mobs;
 using Code.Utilities;
 using Code.Weapon.WeaponData;
 using Code.Weapon.WeaponTypes.Enemy;
@@ -21,7 +22,7 @@ namespace Code.Enemy
         internal                  int             currentWaypoint;
         internal                  EnemyWeapon     weapon;
     }
-    public class Enemy : MonoBehaviour
+    public class Enemy : MonoBehaviour, IDeadable
     {
         [SerializeField] private Transform      spriteTransform;
         [SerializeField] private EnemyContext   enemyCtx;
@@ -66,6 +67,11 @@ namespace Code.Enemy
         {
             rotor.SetDirectionByFlippingSprite(spriteTransform, path.desiredVelocity.x);
             ai.Process();
+        }
+
+        public void MakeDead()
+        {
+            Destroy(gameObject);
         }
     }
 }

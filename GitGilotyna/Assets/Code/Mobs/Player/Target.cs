@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Mobs;
 using Code.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,10 +12,12 @@ namespace Code.Player
         [SerializeField] private Image healthUI;
         [SerializeField] private Canvas canvas;
         private                  float health;
+        private IDeadable deadable;
 
         private void Start()
         {
             health = MaxHealth;
+            deadable = (IDeadable)gameObject.GetComponent(typeof(IDeadable));
         }
 
         public void TakeDamage(float amount)
@@ -26,8 +29,7 @@ namespace Code.Player
             }
 
             health -= amount;
-            if(health <= 0) MakeDead();
-            Debug.Log(health);
+            if(health <= 0) deadable.MakeDead();
         }
 
         private void MakeDead()

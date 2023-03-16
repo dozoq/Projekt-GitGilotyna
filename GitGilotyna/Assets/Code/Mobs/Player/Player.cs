@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Code.Enemy;
+using Code.Mobs;
 using Code.Utilities;
 using Code.Weapon.WeaponData;
 using Code.Weapon.WeaponTypes.Player;
@@ -9,7 +10,7 @@ using UnityEngine.InputSystem;
 
 namespace Code.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDeadable
     {
         [SerializeField] private float speed = 10.0f;
         [SerializeField] private Transform spriteTransform;
@@ -57,6 +58,11 @@ namespace Code.Player
         public void Move(InputAction.CallbackContext ctx)
         {
             moveVector = ctx.ReadValue<Vector2>();
+        }
+
+        public void MakeDead()
+        {
+            Debug.Log("Dead");
         }
     }
 }

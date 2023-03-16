@@ -16,4 +16,5 @@ MonoBehaviour:
   attackDamage: 0
   attackFrequency: 200
   attackRange: 0
-  bulletPrefab: {fileID: 1738627592118019435, guid: 6b5b461ddc47e394aa3b920eab2f534f, type: 3}
+  bulletPrefab: {fileID: 6363812145159654154, guid: 9cf0508c7058357468dca2d76047737c, type: 3}
+  speed: 10

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861e0f0921974c7ca340b93d46694d2b, type: 3}
-  m_Name: SimpleEnemyData
+  m_Name: SimpleSeekerAIData
   m_EditorClassIdentifier: 
   playerLayerMask:
     serializedVersion: 2
