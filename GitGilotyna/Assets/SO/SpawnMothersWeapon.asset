@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: SpawnWeapon
   attackDamage: 0
-  attackFrequency: 200
+  attackFrequency: 10
   attackRange: 0
   bulletPrefab: {fileID: 6363812145159654154, guid: 9cf0508c7058357468dca2d76047737c, type: 3}
   speed: 10

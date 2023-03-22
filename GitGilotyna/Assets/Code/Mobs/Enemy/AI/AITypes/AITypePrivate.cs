@@ -15,10 +15,10 @@ namespace Code.Enemy.AITypes
             /// <returns>outputs object that is in range</returns>
             private Transform TakeEnemyIsInRange()
             {
-                var targetInRange    = PhysicsUtils.GetClosestTarget(ctx);
+                var targetInRange    = PhysicsUtils.GetClosestTarget(_ctx);
                 if (targetInRange.transform == null) return null;
-                var weaponData = ctx.weaponData;
-                if (Vector2.Distance(targetInRange.transform.position, ctx.rigidbody2D.position) < weaponData.attackRange)
+                var weaponData = _ctx.weaponData;
+                if (Vector2.Distance(targetInRange.transform.position, _ctx.rigidbody2D.position) < weaponData.attackRange)
                 {
                     return targetInRange.transform;
                 }

@@ -13,10 +13,10 @@ namespace Code.Enemy.AITypes
         /// Shared context of AI data
         /// </summary>
         public virtual EnemyContext CTX {
-            get => ctx;
-            set => ctx = value;
+            get => _ctx;
+            set => _ctx = value;
         }
-        protected EnemyContext ctx;
+        protected EnemyContext _ctx;
         protected Timer attackCooldownTimer;
         
         #region Virtual Methods
@@ -25,8 +25,8 @@ namespace Code.Enemy.AITypes
         /// </summary>
         public virtual void Start()
         {
-            attackCooldownTimer = new Timer(ctx.weaponData.attackFrequency,HandleAttack);
-            if (ctx.target == null) ctx.reachedEndOfPath = true;
+            attackCooldownTimer = new Timer(_ctx.weaponData.attackFrequency,HandleAttack);
+            if (_ctx.target == null) _ctx.reachedEndOfPath = true;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Code.Enemy.AITypes
         /// </summary>
         public virtual void Process() {
             attackCooldownTimer.Update(1f);
-            if(ctx.path == null || IsPathFinished()) return;
+            if(_ctx.path == null || IsPathFinished()) return;
 
             HandleMovement();
             HandleWaypointReach();
@@ -44,8 +44,8 @@ namespace Code.Enemy.AITypes
         {
             Vector2 force = CalculateDirectionAndForce();
 
-            if(ctx.aiData.useForce) ctx.rigidbody2D.AddForce(force);
-            else ctx.rigidbody2D.MovePosition(ctx.rigidbody2D.position + force);
+            if(_ctx.aiData.useForce) _ctx.rigidbody2D.AddForce(force);
+            else _ctx.rigidbody2D.MovePosition(_ctx.rigidbody2D.position + force);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Code.Enemy.AITypes
         {
             var target = detectedObject.GetComponent<Target>();
             if (target == null) return;
-            ctx.weapon.Attack(target);
+            _ctx.weapon.Attack(target);
         }
 
         /// <summary>
@@ -68,9 +68,9 @@ namespace Code.Enemy.AITypes
         {
             if (!newPath.error)
             {
-                ctx.rigidbody2D.velocity = Vector2.zero;
-                ctx.path            = newPath;
-                ctx.currentWaypoint = 0;
+                _ctx.rigidbody2D.velocity = Vector2.zero;
+                _ctx.path            = newPath;
+                _ctx.currentWaypoint = 0;
             }
         }
 
@@ -99,23 +99,23 @@ namespace Code.Enemy.AITypes
         /// <returns>true if path is completed, false in every other situation</returns>
         protected bool IsPathFinished()
         {
-            if (ctx.path.vectorPath == null) return true;
-            if (ctx.currentWaypoint >= ctx.path.vectorPath.Count)
+            if (_ctx.path.vectorPath == null) return true;
+            if (_ctx.currentWaypoint >= _ctx.path.vectorPath.Count)
             {
-                return ctx.reachedEndOfPath = true;
+                return _ctx.reachedEndOfPath = true;
             }
-            return ctx.reachedEndOfPath = false;
+            return _ctx.reachedEndOfPath = false;
         }
         /// <summary>
         /// Handles changing waypoints to new when current is reached
         /// </summary>
         protected void HandleWaypointReach()
         {
-            float distance = Vector2.Distance(ctx.rigidbody2D.position, ctx.path.vectorPath[ctx.currentWaypoint]);
+            float distance = Vector2.Distance(_ctx.rigidbody2D.position, _ctx.path.vectorPath[_ctx.currentWaypoint]);
 
-            if (distance < ctx.aiData.nextWaypointDistance)
+            if (distance < _ctx.aiData.nextWaypointDistance)
             {
-                ctx.currentWaypoint++;
+                _ctx.currentWaypoint++;
             }
         }
         
@@ -125,15 +125,15 @@ namespace Code.Enemy.AITypes
         /// <returns>Vector2 representing force in direction of waypoint</returns>
         protected Vector2 CalculateDirectionAndForce()
         {
-            Vector2 direction = ((Vector2)ctx.path.vectorPath[ctx.currentWaypoint] - ctx.rigidbody2D.position)
+            Vector2 direction = ((Vector2)_ctx.path.vectorPath[_ctx.currentWaypoint] - _ctx.rigidbody2D.position)
                 .normalized;
-            return direction * (ctx.aiData.speed * Time.fixedDeltaTime);
+            return direction * (_ctx.aiData.speed * Time.fixedDeltaTime);
         }
         
         protected void StartNewRandomPath()
         {
-            var position = PhysicsUtils.DesignateNearVector2AtRandom(ctx.rigidbody2D.position, ctx.aiData.maxRandomPathDistance);
-            ctx.seeker.StartPath(ctx.rigidbody2D.position, position, OnPathCompleted); 
+            var position = PhysicsUtils.DesignateNearVector2AtRandom(_ctx.rigidbody2D.position, _ctx.aiData.maxRandomPathDistance);
+            _ctx.seeker.StartPath(_ctx.rigidbody2D.position, position, OnPathCompleted); 
         }
 
         #endregion

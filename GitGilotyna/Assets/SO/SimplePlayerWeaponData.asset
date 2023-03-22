@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: SimplePlayerWeaponData
   m_EditorClassIdentifier: 
   weaponType: SimplePlayerWeapon
-  attackDamage: 15
+  attackDamage: 80
   attackFrequency: 0.2
   attackRange: 3
+  possibleAttachments: 00000000
   bulletPrefab: {fileID: 4619237640264362488, guid: b15a1127f524dc547a5a9ed75bf46b1b, type: 3}
   speed: 20

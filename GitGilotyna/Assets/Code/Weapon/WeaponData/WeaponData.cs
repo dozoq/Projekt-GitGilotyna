@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Code.Enemy.WeaponTypes.WeaponDecorators;
+using UnityEngine;
 
 namespace Code.Weapon.WeaponData
 {
@@ -8,6 +10,6 @@ namespace Code.Weapon.WeaponData
         public int    attackDamage;
         public float  attackFrequency;        
         public float attackRange;
-
+        public List<WeaponDecoratorType> possibleAttachments;
     }
 }

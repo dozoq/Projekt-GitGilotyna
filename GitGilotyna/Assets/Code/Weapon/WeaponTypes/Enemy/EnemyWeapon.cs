@@ -5,10 +5,11 @@ namespace Code.Weapon.WeaponTypes.Enemy
     public abstract class EnemyWeapon : WeaponType
     {
         public virtual EnemyContext CTX {
-            get => ctx;
-            set => ctx = value;
+            get => _ctx;
+            set => _ctx = value;
         }
 
-        protected       EnemyContext ctx;
+        public override string Name => this.GetType().Name;
+        protected       EnemyContext _ctx;
     }
 }

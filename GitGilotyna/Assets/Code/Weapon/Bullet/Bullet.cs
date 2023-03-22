@@ -23,16 +23,16 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if (collision.collider.CompareTag(hittableTag))
         {
-            Debug.Log("Good Tag");
             var hit = collision.collider.GetComponent<Target>();
             if (hit != null)
             {
-                Debug.Log("Is Target");
-
                 hit.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            else
+            {
                 Destroy(gameObject);
             }
         }

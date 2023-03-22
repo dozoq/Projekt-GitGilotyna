@@ -11,8 +11,8 @@
         // ReSharper disable Unity.PerformanceAnalysis
         public void UpdatePath()
         {
-            if (ctx.seeker.IsDone())
-                ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, base.OnPathCompleted);
+            if (_ctx.seeker.IsDone())
+                _ctx.seeker.StartPath(_ctx.rigidbody2D.position, _ctx.target.position, base.OnPathCompleted);
         }
 
         

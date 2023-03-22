@@ -22,7 +22,7 @@ MonoBehaviour:
   searchRange: 15
   timeToNextSearchPath: 5
   memoryTime: 5
-  aiType: Mother
+  aiType: StandardSeeker
   useForce: 0
   tags:
   - Player

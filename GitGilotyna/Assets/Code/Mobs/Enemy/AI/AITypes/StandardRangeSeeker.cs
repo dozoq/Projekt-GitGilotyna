@@ -12,14 +12,14 @@ namespace Code.Enemy.AITypes
         {
             HandleEnemyInRangeFlag();
             attackCooldownTimer.Update(1f);
-            if(ctx.path == null || IsPathFinished() || isEnemyInRange) return;
+            if(_ctx.path == null || IsPathFinished() || isEnemyInRange) return;
             HandleMovement();
             HandleWaypointReach();
         }
 
         private void HandleEnemyInRangeFlag()
         {
-            var hit = PhysicsUtils.GetClosestTarget(ctx);
+            var hit = PhysicsUtils.GetClosestTarget(_ctx);
             if (hit.transform != null && hit.transform.GetComponent<Target>() != null)
             {
                 isEnemyInRange = true;

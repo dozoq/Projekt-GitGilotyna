@@ -12,8 +12,8 @@ namespace Code.Enemy.AITypes
         public sealed override void Start()
         {
             base.Start();
-            waitForNewPathTimer = new Timer(ctx.aiData.timeToNextSearchPath, StartNewRandomPath);
-            lastSeenTargetTimer = new Timer(ctx.aiData.memoryTime,           ResetTarget);
+            waitForNewPathTimer = new Timer(_ctx.aiData.timeToNextSearchPath, StartNewRandomPath);
+            lastSeenTargetTimer = new Timer(_ctx.aiData.memoryTime,           ResetTarget);
         }
 
         public sealed override void Repeat()
@@ -23,10 +23,10 @@ namespace Code.Enemy.AITypes
 
         private void UpdatePath()
         {
-            if(!ctx.seeker.IsDone()) return;
-            if (ctx.target != null)
-                ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.target.position, OnPathCompleted);
-            else if(ctx.reachedEndOfPath)
+            if(!_ctx.seeker.IsDone()) return;
+            if (_ctx.target != null)
+                _ctx.seeker.StartPath(_ctx.rigidbody2D.position, _ctx.target.position, OnPathCompleted);
+            else if(_ctx.reachedEndOfPath)
             {
                 waitForNewPathTimer.Update(1f);
             }
@@ -37,7 +37,7 @@ namespace Code.Enemy.AITypes
         /// </summary>
         private void SearchIfTargetIsInVisibleRange()
         {
-            var hit = PhysicsUtils.GetClosestTarget(ctx);
+            var hit = PhysicsUtils.GetClosestTarget(_ctx);
             HandleMemorization(hit);
         }
 
@@ -45,7 +45,7 @@ namespace Code.Enemy.AITypes
         {
             if(hit.transform != null)
             {
-                ctx.target = hit.transform;
+                _ctx.target = hit.transform;
                 lastSeenTargetTimer.Reset();
             }
             else
@@ -56,7 +56,7 @@ namespace Code.Enemy.AITypes
 
         private void ResetTarget()
         {
-            ctx.target = null;
+            _ctx.target = null;
         }
     }
 }

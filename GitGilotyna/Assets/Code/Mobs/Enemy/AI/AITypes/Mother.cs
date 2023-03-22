@@ -13,17 +13,17 @@ namespace Code.Enemy.AITypes
         private bool seenTarget = false;
         protected override void HandleAttack()
         {
-            if(GetChildrenCount() >= ctx.aiData.maxChildrenCount) return;
-            ctx.weapon.Attack(null);
+            if(GetChildrenCount() >= _ctx.aiData.maxChildrenCount) return;
+            _ctx.weapon.Attack(null);
         }
 
-        private int GetChildrenCount() => PhysicsUtils.GetTargetCount(ctx.rigidbody2D.position, ctx.aiData.searchRange,
-            ctx.aiData.playerLayerMask, new List<string>() { "Enemy" });
+        private int GetChildrenCount() => PhysicsUtils.GetTargetCount(_ctx.rigidbody2D.position, _ctx.aiData.searchRange,
+            _ctx.aiData.playerLayerMask, new List<string>() { "Enemy" });
         
         public sealed override void Start()
         {
             base.Start();
-            waitForNewPathTimer = new Timer(ctx.aiData.timeToNextSearchPath, StartNewRandomPath);
+            waitForNewPathTimer = new Timer(_ctx.aiData.timeToNextSearchPath, StartNewRandomPath);
         }
 
         public sealed override void Repeat()
@@ -36,8 +36,8 @@ namespace Code.Enemy.AITypes
             SearchIfTargetIsInVisibleRange();
             if (seenTarget)
                 Flee();
-            if(!ctx.seeker.IsDone()) return;
-            else if(ctx.reachedEndOfPath)
+            if(!_ctx.seeker.IsDone()) return;
+            else if(_ctx.reachedEndOfPath)
             {
                 waitForNewPathTimer.Update(1f);
             }
@@ -46,25 +46,25 @@ namespace Code.Enemy.AITypes
         private void Flee()
         {
             var fleeDirection = GetFleeDirection();
-            ctx.seeker.StartPath(ctx.rigidbody2D.position, ctx.rigidbody2D.position + fleeDirection, OnPathCompleted);
+            _ctx.seeker.StartPath(_ctx.rigidbody2D.position, _ctx.rigidbody2D.position + fleeDirection, OnPathCompleted);
         }
 
         private Vector2 GetFleeDirection()
         {
-            Vector2 targetPosition = ctx.target.transform.position;
-            Vector2 targetDirection = (ctx.rigidbody2D.position - targetPosition).normalized;
-            return targetDirection * ctx.aiData.searchRange;
+            Vector2 targetPosition = _ctx.target.transform.position;
+            Vector2 targetDirection = (_ctx.rigidbody2D.position - targetPosition).normalized;
+            return targetDirection * _ctx.aiData.searchRange;
         }
         
         private void SearchIfTargetIsInVisibleRange()
         {
             seenTarget = false;
-            var hit = PhysicsUtils.GetClosestTarget(ctx);
+            var hit = PhysicsUtils.GetClosestTarget(_ctx);
             Target target = null;
             if (hit.transform != null) target = hit.transform.GetComponent<Target>();
             if (target == null) return;
             seenTarget = true;
-            ctx.target = target.transform;
+            _ctx.target = target.transform;
         }
     }
 }
