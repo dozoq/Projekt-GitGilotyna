@@ -376,7 +376,7 @@ Transform:
   - {fileID: 6363812145782320118}
   - {fileID: 5197948443365040479}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6363812145159654261
 Rigidbody2D:
@@ -488,6 +488,7 @@ MonoBehaviour:
     weaponData: {fileID: 11400000, guid: 66db830da81412d4eb1957e0d5d90eda, type: 2}
     target: {fileID: 0}
     seeker: {fileID: 6363812145159654257}
+  lootBag: {fileID: 9185085928333462741, guid: d7984412d44b4a748b604d55f01a73e1, type: 3}
 --- !u!58 &6363812145159654258
 CircleCollider2D:
   m_ObjectHideFlags: 0

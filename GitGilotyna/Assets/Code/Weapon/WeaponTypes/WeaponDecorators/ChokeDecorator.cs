@@ -1,4 +1,4 @@
-﻿using Code.Player;
+﻿using Code.Mobs;
 using UnityEngine;
 
 namespace Code.Enemy.WeaponTypes.WeaponDecorators

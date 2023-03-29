@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.Player;
+using Code.Mobs;
 using Code.Weapon.WeaponData;
 using Unity.Mathematics;
 using UnityEngine;

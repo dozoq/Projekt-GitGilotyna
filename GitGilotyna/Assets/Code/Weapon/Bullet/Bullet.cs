@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Code.Player;
+using Code.Mobs;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour

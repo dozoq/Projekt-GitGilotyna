@@ -4,7 +4,7 @@ using Code.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.Player
+namespace Code.Mobs
 {
     public class Target : MonoBehaviour
     {

@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Code.Enemy;
-using Code.Player;
+using Code.Mobs;
 using Code.Utilities;
 using Code.Weapon.WeaponData;
-using UnityEngine;
 
 public abstract class WeaponType : IFactoryData, IWeapon
 {

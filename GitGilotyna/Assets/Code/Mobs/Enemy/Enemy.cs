@@ -5,6 +5,7 @@ using Code.Utilities;
 using Code.Weapon.WeaponData;
 using Code.Weapon.WeaponTypes.Enemy;
 using Pathfinding;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Code.Enemy
@@ -26,6 +27,7 @@ namespace Code.Enemy
     {
         [SerializeField] private Transform      spriteTransform;
         [SerializeField] private EnemyContext   enemyCtx;
+        [SerializeField] private GameObject lootBag;
         private                  AIPath         path;
         private                  DirectionRotor rotor;
         private                  AIType         ai;
@@ -71,6 +73,7 @@ namespace Code.Enemy
 
         public void MakeDead()
         {
+            if (lootBag != null) Instantiate(lootBag, transform.position, quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Code.Player;
+using Code.Mobs;
 using Code.Utilities;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Code.Enemy.AITypes
 {

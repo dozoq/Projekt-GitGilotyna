@@ -14,14 +14,15 @@ namespace Code.General
 
         private IState<GameManager> _menuState, _playState;
         private StateContext<IState<GameManager>, GameManager> _stateContext;
-
-        private void Start()
+        public CashSystem cashSystem { get; private set; }
+        private void Awake()
         {
             _sessionStartTime = DateTime.Now;
             _stateContext = new StateContext<IState<GameManager>, GameManager>(this);
             _menuState = GameStateFactory.Get("MenuState");
-            _playState = GameStateFactory.Get("PlayState");
-
+            _playState = GameStateFactory.Get("PlayState");            
+            if (gameObject.GetComponent<CashSystem>() == null) gameObject.AddComponent<CashSystem>();
+            cashSystem = this.GetComponent<CashSystem>();
         }
 
         private void OnApplicationQuit()

@@ -1,4 +1,4 @@
-﻿using Code.Player;
+﻿using Code.Mobs;
 
 namespace Code.Weapon.WeaponTypes.Enemy
 {
