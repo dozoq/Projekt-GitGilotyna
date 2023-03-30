@@ -13,11 +13,11 @@ namespace Code.Enemy
     [Serializable]
     public struct EnemyContext
     {
-        [SerializeField] internal Rigidbody2D     rigidbody2D;
-        [SerializeField] internal AIData          aiData;
-        [SerializeField] internal WeaponData weaponData;
-        [SerializeField] internal Transform       target;
-        [SerializeField] internal Seeker          seeker;
+        [SerializeField, ComponentReferenceInspector] internal Rigidbody2D     rigidbody2D;
+        [SerializeField, ComponentReferenceInspector] internal AIData          aiData;
+        [SerializeField, ComponentReferenceInspector] internal WeaponData weaponData;
+        [SerializeField, ComponentReferenceInspector] internal Transform       target;
+        [SerializeField, ComponentReferenceInspector] internal Seeker          seeker;
         internal                  Path            path;
         internal                  bool            reachedEndOfPath;        
         internal                  int             currentWaypoint;
@@ -25,7 +25,7 @@ namespace Code.Enemy
     }
     public class Enemy : MonoBehaviour, IDeadable
     {
-        [SerializeField] private Transform      spriteTransform;
+        [SerializeField, ComponentReferenceInspector] private Transform      spriteTransform;
         [SerializeField] private EnemyContext   enemyCtx;
         [SerializeField] private GameObject lootBag;
         private                  AIPath         path;
