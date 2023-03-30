@@ -15,4 +15,4 @@ MonoBehaviour:
   weaponType: SimpleWeapon
   attackDamage: 10
   attackFrequency: 3
-  attackRange: 25
+  attackRange: 1
