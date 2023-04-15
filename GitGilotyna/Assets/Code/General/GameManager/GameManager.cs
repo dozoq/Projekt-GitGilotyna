@@ -9,6 +9,8 @@ namespace Code.General
 {
     public class GameManager : Singleton<GameManager>
     {
+        [SerializeField] private AudioSource source;
+        
         private DateTime _sessionStartTime;
         private DateTime _sessionEndTime;
 
@@ -53,6 +55,16 @@ namespace Code.General
         {
             SceneManager.LoadScene(0);
             _stateContext.Transition(_menuState);
+        }
+
+        public static void QuitGame()
+        {
+            Application.Quit();
+        }
+
+        public void MuteGame()
+        {
+            source.volume = 0;
         }
     }
 }
