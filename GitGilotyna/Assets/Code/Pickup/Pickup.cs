@@ -36,7 +36,7 @@ namespace Code.Pickup
 
         private void AddCash()
         {
-            GameManager.instance.cashSystem.AddCash(cashValue);
+            CashSystem.AddCash(cashValue);
         }
     }
 }

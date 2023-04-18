@@ -140,7 +140,11 @@ namespace Code.Player
 
         public void Move(InputAction.CallbackContext ctx)
         {
+            float modifier = 1.0f;
+            if (PlayerPrefs.HasKey(SkillType.SPEED.ToString()))
+                modifier += 100.0f / PlayerPrefs.GetInt(SkillType.SPEED.ToString());
             _moveVector = ctx.ReadValue<Vector2>();
+            _moveVector.x *= modifier;
         }
 
         public void MakeDead()
