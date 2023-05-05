@@ -8,6 +8,7 @@ using Code.Utilities;
 using Code.Weapon.WeaponData;
 using Code.Weapon.WeaponTypes.Player;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Code.Player
@@ -15,6 +16,8 @@ namespace Code.Player
     public class Player : MonoBehaviour, IDeadable
     {
         public Rigidbody2D GetRigidbody => rb;
+        [SerializeField] private UnityEvent OnAttack;
+        [SerializeField] private UnityEvent OnMove;
 
         public WeaponData firstWeaponData;
         [SerializeField] private float speed = 10.0f;
@@ -133,13 +136,14 @@ namespace Code.Player
                     else _stateContext.Transition(_attackState);
                     _firstWeapon.Attack(target);
                     _readyForAttack = false;
-                    
+                    OnAttack.Invoke();
                 } else if(_moveVector.magnitude > 0) _stateContext.Transition(_runState); 
             }
         }
 
         public void Move(InputAction.CallbackContext ctx)
         {
+            OnMove.Invoke();
             float modifier = 1.0f;
             if (PlayerPrefs.HasKey(SkillType.SPEED.ToString()))
                 modifier += 100.0f / PlayerPrefs.GetInt(SkillType.SPEED.ToString());

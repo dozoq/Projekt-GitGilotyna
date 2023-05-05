@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 73498258}
   - component: {fileID: 73498257}
   - component: {fileID: 73498259}
+  - component: {fileID: 73498260}
   m_Layer: 5
   m_Name: Damage_III
   m_TagString: Untagged
@@ -707,6 +708,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &73498260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73498252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &77863311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,6 +1153,7 @@ GameObject:
   - component: {fileID: 175339725}
   - component: {fileID: 175339724}
   - component: {fileID: 175339723}
+  - component: {fileID: 175339728}
   m_Layer: 5
   m_Name: SoundSwitch
   m_TagString: Untagged
@@ -1234,9 +1261,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 284612772}
-        m_TargetAssemblyTypeName: Code.General.GameManager, Scripts
-        m_MethodName: MuteGame
+      - m_Target: {fileID: 284612775}
+        m_TargetAssemblyTypeName: SoundSystem, Scripts
+        m_MethodName: MuteAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 175339728}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1284,6 +1323,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175339721}
   m_CullTransparentMesh: 1
+--- !u!114 &175339728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175339721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &187985423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,6 +1350,7 @@ GameObject:
   - component: {fileID: 187985427}
   - component: {fileID: 187985426}
   - component: {fileID: 187985425}
+  - component: {fileID: 187985430}
   m_Layer: 5
   m_Name: MissionB
   m_TagString: Untagged
@@ -1404,7 +1457,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 187985428}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187985430}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &187985428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,6 +1508,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187985423}
   m_CullTransparentMesh: 1
+--- !u!114 &187985430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187985423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: AdventureStart
 --- !u!1 &252367605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1536,7 @@ GameObject:
   - component: {fileID: 252367611}
   - component: {fileID: 252367610}
   - component: {fileID: 252367612}
+  - component: {fileID: 252367613}
   m_Layer: 5
   m_Name: Speed_III
   m_TagString: Untagged
@@ -1631,6 +1710,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 252367613}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &252367613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252367605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &264199980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,161 +2005,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275501802}
   m_CullTransparentMesh: 1
---- !u!1 &284612771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 284612773}
-  - component: {fileID: 284612772}
-  - component: {fileID: 284612774}
-  - component: {fileID: 284612775}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &284612772
+--- !u!114 &284612772 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3296822887858647203, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+  m_PrefabInstance: {fileID: 3296822887600089095}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284612771}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6e0d532a394b6e8b7ced6450c4029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 284612775}
---- !u!4 &284612773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284612771}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.513048, y: 24.752205, z: 1.1153816}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &284612774
+--- !u!114 &284612775 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+  m_PrefabInstance: {fileID: 3296822887600089095}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284612771}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108ec9f0786c4407ac7d8564e779a8a5, type: 3}
+  m_Script: {fileID: 11500000, guid: eb7eae2bfcdc476428aaf1de97cc7a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &284612775
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284612771}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &297095801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,6 +2042,7 @@ GameObject:
   - component: {fileID: 297095807}
   - component: {fileID: 297095806}
   - component: {fileID: 297095808}
+  - component: {fileID: 297095809}
   m_Layer: 5
   m_Name: Health_III
   m_TagString: Untagged
@@ -2244,6 +2216,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &297095809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297095801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &299724212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,6 +2255,7 @@ GameObject:
   - component: {fileID: 299724216}
   - component: {fileID: 299724215}
   - component: {fileID: 299724214}
+  - component: {fileID: 299724219}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -2377,6 +2375,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 299724219}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &299724217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,6 +2425,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299724212}
   m_CullTransparentMesh: 1
+--- !u!114 &299724219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299724212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &364364509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,6 +2808,7 @@ GameObject:
   - component: {fileID: 391392071}
   - component: {fileID: 391392070}
   - component: {fileID: 391392069}
+  - component: {fileID: 391392074}
   m_Layer: 5
   m_Name: MissionButton
   m_TagString: Untagged
@@ -2904,6 +2928,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 391392074}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &391392072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2942,6 +2978,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391392067}
   m_CullTransparentMesh: 1
+--- !u!114 &391392074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391392067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &400558267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3344,6 +3393,7 @@ GameObject:
   - component: {fileID: 450801294}
   - component: {fileID: 450801293}
   - component: {fileID: 450801295}
+  - component: {fileID: 450801296}
   m_Layer: 5
   m_Name: Damage_II
   m_TagString: Untagged
@@ -3517,6 +3567,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &450801296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450801288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &462800620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3532,6 +3607,7 @@ GameObject:
   - component: {fileID: 462800626}
   - component: {fileID: 462800625}
   - component: {fileID: 462800627}
+  - component: {fileID: 462800628}
   m_Layer: 5
   m_Name: Health_II
   m_TagString: Untagged
@@ -3705,6 +3781,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &462800628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462800620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &503276898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3717,6 +3818,7 @@ GameObject:
   - component: {fileID: 503276902}
   - component: {fileID: 503276901}
   - component: {fileID: 503276900}
+  - component: {fileID: 503276903}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -3801,6 +3903,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 503276903}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &503276901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,6 +3953,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503276898}
   m_CullTransparentMesh: 1
+--- !u!114 &503276903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503276898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &510663213
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,6 +4199,7 @@ RectTransform:
   - {fileID: 579172233}
   - {fileID: 378817340}
   - {fileID: 2087332659}
+  - {fileID: 2015372364}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4238,6 +4366,7 @@ GameObject:
   - component: {fileID: 549065516}
   - component: {fileID: 549065515}
   - component: {fileID: 549065517}
+  - component: {fileID: 549065518}
   m_Layer: 5
   m_Name: Damage_IV
   m_TagString: Untagged
@@ -4411,6 +4540,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &549065518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549065510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &551258788
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,6 +4580,7 @@ GameObject:
   - component: {fileID: 551258793}
   - component: {fileID: 551258795}
   - component: {fileID: 551258796}
+  - component: {fileID: 551258797}
   m_Layer: 5
   m_Name: Speed_IV
   m_TagString: Untagged
@@ -4568,6 +4723,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 252367613}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &551258795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4599,6 +4766,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 13, y: -13}
   m_UseGraphicAlpha: 1
+--- !u!114 &551258797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551258788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &573330239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4969,6 +5149,7 @@ MonoBehaviour:
   - {fileID: 845274800}
   - {fileID: 1431321189}
   - {fileID: 992754475}
+  _cashUIUpdate: {fileID: 2015372367}
   UpgradedColor: {r: 0.4433962, g: 0.04433963, b: 0.079451784, a: 1}
   NotUpgradedColor: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   PossibleUpgradeColor: {r: 0.3827875, g: 0.8018868, b: 0.38877466, a: 1}
@@ -5475,6 +5656,7 @@ GameObject:
   - component: {fileID: 658360373}
   - component: {fileID: 658360372}
   - component: {fileID: 658360374}
+  - component: {fileID: 658360375}
   m_Layer: 5
   m_Name: Health_I
   m_TagString: Untagged
@@ -5648,6 +5830,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &658360375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658360367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &692354506
 GameObject:
   m_ObjectHideFlags: 0
@@ -5663,6 +5870,7 @@ GameObject:
   - component: {fileID: 692354512}
   - component: {fileID: 692354511}
   - component: {fileID: 692354513}
+  - component: {fileID: 692354514}
   m_Layer: 5
   m_Name: Armor_IV
   m_TagString: Untagged
@@ -5836,6 +6044,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &692354514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692354506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &741630981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6107,7 +6340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 785641855}
   - component: {fileID: 785641854}
-  - component: {fileID: 785641853}
+  - component: {fileID: 785641856}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -6115,25 +6348,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &785641853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785641852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &785641854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,6 +6378,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785641856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785641852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &845274794
 GameObject:
   m_ObjectHideFlags: 0
@@ -6179,6 +6422,7 @@ GameObject:
   - component: {fileID: 845274800}
   - component: {fileID: 845274799}
   - component: {fileID: 845274801}
+  - component: {fileID: 845274802}
   m_Layer: 5
   m_Name: Armor_III
   m_TagString: Untagged
@@ -6352,6 +6596,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &845274802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845274794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &852834921
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,6 +7092,7 @@ GameObject:
   - component: {fileID: 992754475}
   - component: {fileID: 992754476}
   - component: {fileID: 992754477}
+  - component: {fileID: 992754478}
   m_Layer: 5
   m_Name: Armor_I
   m_TagString: Untagged
@@ -6996,6 +7266,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &992754478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992754470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &1040474719
 GameObject:
   m_ObjectHideFlags: 0
@@ -7138,6 +7433,7 @@ GameObject:
   - component: {fileID: 1044898676}
   - component: {fileID: 1044898675}
   - component: {fileID: 1044898677}
+  - component: {fileID: 1044898678}
   m_Layer: 5
   m_Name: Health_IV
   m_TagString: Untagged
@@ -7311,6 +7607,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1044898678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044898670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &1056444157
 GameObject:
   m_ObjectHideFlags: 0
@@ -8115,6 +8436,7 @@ GameObject:
   - component: {fileID: 1218372531}
   - component: {fileID: 1218372530}
   - component: {fileID: 1218372532}
+  - component: {fileID: 1218372533}
   m_Layer: 5
   m_Name: Damage_I
   m_TagString: Untagged
@@ -8288,6 +8610,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1218372533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218372525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &1224345468
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,6 +9062,7 @@ GameObject:
   - component: {fileID: 1337021862}
   - component: {fileID: 1337021861}
   - component: {fileID: 1337021860}
+  - component: {fileID: 1337021865}
   m_Layer: 5
   m_Name: MissionA
   m_TagString: Untagged
@@ -8821,7 +9169,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337021863}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187985430}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337021863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8860,6 +9220,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337021858}
   m_CullTransparentMesh: 1
+--- !u!114 &1337021865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337021858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: AdventureStart
 --- !u!1 &1342961458
 GameObject:
   m_ObjectHideFlags: 0
@@ -9106,6 +9479,7 @@ GameObject:
   - component: {fileID: 1431321189}
   - component: {fileID: 1431321188}
   - component: {fileID: 1431321190}
+  - component: {fileID: 1431321191}
   m_Layer: 5
   m_Name: Armor_II
   m_TagString: Untagged
@@ -9279,6 +9653,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 73498260}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1431321191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431321183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &1439956821
 GameObject:
   m_ObjectHideFlags: 0
@@ -10135,6 +10534,7 @@ GameObject:
   - component: {fileID: 1559809374}
   - component: {fileID: 1559809373}
   - component: {fileID: 1559809372}
+  - component: {fileID: 1559809377}
   m_Layer: 5
   m_Name: CharacterUpgrade
   m_TagString: Untagged
@@ -10254,6 +10654,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1559809377}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1559809375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10292,6 +10704,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559809370}
   m_CullTransparentMesh: 1
+--- !u!114 &1559809377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559809370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &1585458319
 GameObject:
   m_ObjectHideFlags: 0
@@ -11014,6 +11439,7 @@ GameObject:
   - component: {fileID: 1724328009}
   - component: {fileID: 1724328008}
   - component: {fileID: 1724328007}
+  - component: {fileID: 1724328012}
   m_Layer: 5
   m_Name: MissionC
   m_TagString: Untagged
@@ -11120,7 +11546,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1724328010}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187985430}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1724328010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11159,6 +11597,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724328005}
   m_CullTransparentMesh: 1
+--- !u!114 &1724328012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724328005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: AdventureStart
 --- !u!1 &1762039438
 GameObject:
   m_ObjectHideFlags: 0
@@ -11580,6 +12031,7 @@ GameObject:
   - component: {fileID: 1861316032}
   - component: {fileID: 1861316031}
   - component: {fileID: 1861316030}
+  - component: {fileID: 1861316035}
   m_Layer: 5
   m_Name: WeaponSelection
   m_TagString: Untagged
@@ -11699,6 +12151,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1861316035}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1861316033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11737,6 +12201,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861316028}
   m_CullTransparentMesh: 1
+--- !u!114 &1861316035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861316028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: Click
 --- !u!1 &1883461777
 GameObject:
   m_ObjectHideFlags: 0
@@ -11752,6 +12229,7 @@ GameObject:
   - component: {fileID: 1883461783}
   - component: {fileID: 1883461782}
   - component: {fileID: 1883461784}
+  - component: {fileID: 1883461785}
   m_Layer: 5
   m_Name: Speed_I
   m_TagString: Untagged
@@ -11925,6 +12403,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 252367613}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1883461785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883461777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
 --- !u!1 &1893228285
 GameObject:
   m_ObjectHideFlags: 0
@@ -12670,6 +13173,155 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003974201}
   m_CullTransparentMesh: 1
+--- !u!1 &2015372363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2015372364}
+  - component: {fileID: 2015372366}
+  - component: {fileID: 2015372365}
+  - component: {fileID: 2015372367}
+  m_Layer: 5
+  m_Name: CashAmount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2015372364
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015372363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 515199271}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &2015372365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015372363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0$
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 4
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -283.23456, y: 0, z: 0, w: -45.404045}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2015372366
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015372363}
+  m_CullTransparentMesh: 1
+--- !u!114 &2015372367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015372363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb6d736135dace4bbe4218f8ab9413a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: {fileID: 2015372365}
 --- !u!1 &2024097520
 GameObject:
   m_ObjectHideFlags: 0
@@ -13619,6 +14271,7 @@ GameObject:
   - component: {fileID: 2144980241}
   - component: {fileID: 2144980240}
   - component: {fileID: 2144980242}
+  - component: {fileID: 2144980243}
   m_Layer: 5
   m_Name: Speed_II
   m_TagString: Untagged
@@ -13792,3 +14445,87 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 252367613}
+        m_TargetAssemblyTypeName: PlayMusicEvent, Scripts
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2144980243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144980235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipName: SkillUp
+--- !u!1001 &3296822887600089095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 24.513048
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24.752205
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.1153816
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647204, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}

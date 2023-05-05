@@ -2,6 +2,7 @@
 using Code.General.States.StateFactory;
 using Code.Player.States.StateFactory;
 using Code.Utilities;
+using MySql.Data.MySqlClient;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +10,15 @@ namespace Code.General
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] private AudioSource source;
-        
+        public CashSystem cashSystem { get; private set; }
+        public SoundSystem soundSystem { get; private set; }
+
         private DateTime _sessionStartTime;
         private DateTime _sessionEndTime;
 
         private IState<GameManager> _menuState, _playState;
         private StateContext<IState<GameManager>, GameManager> _stateContext;
-        public CashSystem cashSystem { get; private set; }
+
         protected override void Awake()
         {
             base.Awake();
@@ -26,6 +28,18 @@ namespace Code.General
             _playState = GameStateFactory.Get("PlayState");            
             if (gameObject.GetComponent<CashSystem>() == null) gameObject.AddComponent<CashSystem>();
             cashSystem = this.GetComponent<CashSystem>();
+            soundSystem = this.GetComponent<SoundSystem>();
+            if (!soundSystem) throw new Exception("Sound System Not Set");
+        }
+
+        private void Start()
+        {
+            //testDB();
+        }
+
+        private void OnEnable()
+        {
+            GetComponent<RandomTimeInvoker>().enabled = SceneManager.GetActiveScene().buildIndex != 0;
         }
 
         private void OnApplicationQuit()
@@ -33,15 +47,6 @@ namespace Code.General
             _sessionEndTime = DateTime.Now;
 
             TimeSpan timeDifference = _sessionEndTime.Subtract(_sessionStartTime);
-        }
-
-        private void OnGUI()
-        {
-            if (GUILayout.Button("NextScene"))
-            {
-                LoadNextScene();
-                _stateContext.Transition(_playState);
-            }
         }
 
         private void LoadNextScene()
@@ -61,10 +66,28 @@ namespace Code.General
         {
             Application.Quit();
         }
-
-        public void MuteGame()
+        private void testDB()
         {
-            source.volume = 0;
+            Debug.Log("Starting Connection...");
+            string connStr = "";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                Debug.Log("Connecting to MySQL...");
+                conn.Open();
+                var stm = "SELECT VERSION()";
+                var cmd = new MySqlCommand(stm, conn);
+
+                var version = cmd.ExecuteScalar().ToString();
+                Debug.Log($"MySQL version: {version}");
+            }
+            catch (Exception ex)
+            {
+                Debug.Log(ex.ToString());
+            }
+            conn.Close();
+            Debug.Log("Done.");
         }
+        
     }
 }

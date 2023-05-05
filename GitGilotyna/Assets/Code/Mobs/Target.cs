@@ -2,6 +2,7 @@
 using Code.Mobs;
 using Code.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Code.Mobs
@@ -12,6 +13,7 @@ namespace Code.Mobs
         [SerializeField] private Image healthUI;
         [SerializeField] private Canvas canvas;
         [SerializeField] private TargetType type;
+        [SerializeField] private UnityEvent<float> OnDamage;
         private                  float health;
         private IDeadable deadable;
 
@@ -19,7 +21,7 @@ namespace Code.Mobs
         {
             if (type == TargetType.PLAYER && PlayerPrefs.HasKey(SkillType.HEALTH.ToString()))
             {
-                MaxHealth *= 1.0f + 100.0f/PlayerPrefs.GetInt(SkillType.HEALTH.ToString());
+                MaxHealth *= 1.0f + PlayerPrefs.GetInt(SkillType.HEALTH.ToString()) / 100f;
             }
             health = MaxHealth;
             deadable = (IDeadable)gameObject.GetComponent(typeof(IDeadable));
@@ -29,20 +31,20 @@ namespace Code.Mobs
         {
             float modifier = 1f;
             if (type == TargetType.PLAYER)
+            {     
+                if (PlayerPrefs.HasKey(SkillType.ARMOR.ToString()))
+                    modifier += PlayerPrefs.GetInt(SkillType.ARMOR.ToString()) / 100f;
+            }
+            else
             {
                 canvas.gameObject.SetActive(true);
-                healthUI.fillAmount = health / MaxHealth;
-                if (PlayerPrefs.HasKey(SkillType.ARMOR.ToString()))
-                    modifier += 100f / PlayerPrefs.GetInt(SkillType.ARMOR.ToString());
             }
+            healthUI.fillAmount = health / MaxHealth;
+
 
             health -= amount/modifier;
+            OnDamage.Invoke(amount);
             if(health <= 0) deadable.MakeDead();
-        }
-
-        private void MakeDead()
-        {
-            Destroy(gameObject);
         }
     }
 
