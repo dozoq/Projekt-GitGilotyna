@@ -1,3 +1,4 @@
+using System;
 using Code.Mobs;
 using UnityEngine;
 
@@ -12,17 +13,20 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    
+
     public void Initialize(string tag, int damage)
     {
         hittableTag = tag;
         this.damage = damage;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.collider.CompareTag(hittableTag))
+        if (collider.CompareTag(hittableTag))
         {
-            var hit = collision.collider.GetComponent<Target>();
+            var hit = collider.GetComponent<Target>();
             if (hit != null)
             {
                 hit.TakeDamage(damage);

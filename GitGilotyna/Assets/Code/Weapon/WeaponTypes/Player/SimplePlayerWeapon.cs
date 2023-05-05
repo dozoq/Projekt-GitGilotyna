@@ -17,7 +17,12 @@ namespace Code.Weapon.WeaponTypes.Player
             var gameObject =
                 GameObject.Instantiate(weaponData.bulletPrefab, position, quaternion.identity);
             var rb = gameObject.GetComponent<Rigidbody2D>();
-            gameObject.GetComponent<Bullet>().Initialize("Enemy", weaponData.attackDamage);
+            float modifier = 1.0f;
+            if (PlayerPrefs.HasKey(SkillType.ATTACK.ToString()))
+            {
+                modifier += 100.0f / PlayerPrefs.GetInt(SkillType.ATTACK.ToString());
+            }
+            gameObject.GetComponent<Bullet>().Initialize("Enemy", (int)(weaponData.attackDamage* modifier));
             var force = (target.transform.position - position).normalized * (Time.fixedDeltaTime * weaponData.speed);
             rb.AddForce(force, ForceMode2D.Impulse);
         }

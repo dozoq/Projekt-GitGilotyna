@@ -5,6 +5,7 @@ using Code.Mobs;
 using Code.Player;
 using Code.Utilities.Extends;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Code.Pickup
 {
@@ -13,6 +14,7 @@ namespace Code.Pickup
         [SerializeField] private float expValue = 0;
         [SerializeField] private float cashValue = 0;
         [SerializeField] private List<string> tags;
+        [SerializeField] private UnityEvent onPickup;
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareListOfTags(tags))
@@ -23,6 +25,7 @@ namespace Code.Pickup
 
         private void HandlePickup()
         {
+            onPickup.Invoke();
             AddExperience();
             AddCash();
             Destroy(gameObject);
@@ -36,7 +39,7 @@ namespace Code.Pickup
 
         private void AddCash()
         {
-            GameManager.instance.cashSystem.AddCash(cashValue);
+            CashSystem.AddCash(cashValue);
         }
     }
 }
