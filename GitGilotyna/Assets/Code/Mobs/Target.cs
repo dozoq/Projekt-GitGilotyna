@@ -24,7 +24,7 @@ namespace Code.Mobs
                 MaxHealth *= 1.0f + PlayerPrefs.GetInt(SkillType.HEALTH.ToString()) / 100f;
             }
             health = MaxHealth;
-            deadable = (IDeadable)gameObject.GetComponent(typeof(IDeadable));
+            deadable = (IDeadable)gameObject.GetComponentInParent(typeof(IDeadable));
         }
 
         public void TakeDamage(float amount)

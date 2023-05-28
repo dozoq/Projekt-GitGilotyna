@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ namespace Code.Player
     public class LevelSystem: MonoBehaviour
     {
         [SerializeField] private Slider _slider;
+        [SerializeField] private TMP_Text _lvlCounter;
         [SerializeField] private float experienceAmount = 0;
         [SerializeField] private float experienceNeededForFirstLevel = 100;
         [SerializeField] private float levelRequirementsExponential = 1f;
@@ -40,6 +42,7 @@ namespace Code.Player
         private void LevelUp()
         {
             level++;
+            _lvlCounter.text = level.ToString();
             experienceAmount -= experienceNeeded;
             experienceNeeded = experienceNeededForFirstLevel * Mathf.Pow(level, levelRequirementsExponential);
         }

@@ -1,5 +1,6 @@
 using System;
 using Code.Enemy.AITypes;
+using Code.General;
 using Code.Mobs;
 using Code.Utilities;
 using Code.Weapon.WeaponData;
@@ -43,7 +44,7 @@ namespace Code.Enemy
             SetupSharedData();
             ai.Start();
             InvokeRepeating(nameof(AIRepeating), 0f, AIInvokeRepeatTime);
-            
+            GameManager.instance.remainingCount++;
         }
 
         private void SetupSharedData()
@@ -74,6 +75,8 @@ namespace Code.Enemy
         public void MakeDead()
         {
             if (lootBag != null) Instantiate(lootBag, transform.position, quaternion.identity);
+            GameManager.instance.remainingCount--;
+            GameManager.instance.killCount++;
             Destroy(gameObject);
         }
     }
