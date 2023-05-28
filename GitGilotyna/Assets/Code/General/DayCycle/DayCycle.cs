@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
@@ -14,6 +16,7 @@ namespace Code.General
         [SerializeField] private float lightUpdateWaitTime = 0.0001f;
         [SerializeField] private float timeUntilDawn = 10f;
         [SerializeField] private UnityEvent startNight;
+        [SerializeField] private TMP_Text timer;
         private float _actualTime;
 
         private void Start()
@@ -25,6 +28,7 @@ namespace Code.General
         {
             while (true)
             {
+                RefreshTimer();
                 if (_actualTime < timeUntilDawn)
                 {
                     _actualTime += lightUpdateWaitTime;
@@ -41,6 +45,11 @@ namespace Code.General
                     StopCoroutine(Cycle());
                 }
             }
+        }
+
+        private void RefreshTimer()
+        {
+            timer.text = (timeUntilDawn-_actualTime).ToString("F");
         }
 
 

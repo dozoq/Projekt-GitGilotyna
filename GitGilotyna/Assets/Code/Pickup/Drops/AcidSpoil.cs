@@ -16,17 +16,17 @@ public class AcidSpoil : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareListOfTags(targetTags) && other.gameObject.GetComponent<Target>() != null)
+        if (other.gameObject.CompareListOfTags(targetTags) && other.gameObject.GetComponentInChildren<Target>() != null)
         {
-            _avaibleTargets.Add(other.GetComponent<Target>());
+            _avaibleTargets.Add(other.GetComponentInChildren<Target>());
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareListOfTags(targetTags) && other.gameObject.GetComponent<Target>() != null)
+        if (other.gameObject.CompareListOfTags(targetTags) && other.gameObject.GetComponentInChildren<Target>() != null)
         {
-            _avaibleTargets.Remove(other.GetComponent<Target>());
+            _avaibleTargets.Remove(other.GetComponentInChildren<Target>());
         }
     }
 

@@ -33,7 +33,7 @@ namespace Code.Pickup
 
         private void AddExperience()
         {
-            var levelSystem = FindObjectOfType<Player.Player>().GetComponent<LevelSystem>();
+            var levelSystem = FindObjectOfType<Player.Player>().GetComponentInChildren<LevelSystem>();
             levelSystem.AddExperience(expValue);
         }
 

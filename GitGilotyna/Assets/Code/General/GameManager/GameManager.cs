@@ -13,6 +13,37 @@ namespace Code.General
         public CashSystem cashSystem { get; private set; }
         public SoundSystem soundSystem { get; private set; }
 
+        private int _killCount = 0;
+
+        public int killCount
+        {
+            get
+            {
+                return _killCount;
+            }
+            set
+            {
+                _killCount = value;
+                onStatsChangedAction?.Invoke();
+            }
+        }
+
+        private int _remainingCount = 0;
+        public int remainingCount
+        {
+            get
+            {
+                return _remainingCount;
+            }
+            set
+            {
+                _remainingCount = value;
+                onStatsChangedAction?.Invoke();
+            }
+        }
+
+        public Action onStatsChangedAction;
+
         private DateTime _sessionStartTime;
         private DateTime _sessionEndTime;
 
