@@ -24,18 +24,18 @@ public class UpgradeSystem : MonoBehaviour
     {
         foreach (var upgrade in UpgradeButtons)
         {
-            var outline = upgrade.GetComponent<Outline>();
+            var outline = upgrade.GetComponent<Image>();
             if (PlayerPrefs.HasKey(upgrade.name))
             {
-                outline.effectColor = UpgradedColor;
+                outline.color = UpgradedColor;
             }
             else if(IsAfforadble(upgrade.cost) && IsSkillReadyToUpgrade(upgrade)) 
             {
-                outline.effectColor = PossibleUpgradeColor;
+                outline.color = PossibleUpgradeColor;
             }
             else
             {
-                outline.effectColor = NotUpgradedColor;
+                // outline.color = NotUpgradedColor;
             }
         }
     }

@@ -55,7 +55,7 @@ namespace Code.Enemy.AITypes
         /// <exception cref="NotATargetException">throws if target is not valid</exception>
         protected virtual void AttackIfValidTarget(Transform detectedObject)
         {
-            var target = detectedObject.GetComponent<Target>();
+            var target = detectedObject.GetComponentInChildren<Target>();
             if (target == null) return;
             _ctx.weapon.Attack(target);
         }
