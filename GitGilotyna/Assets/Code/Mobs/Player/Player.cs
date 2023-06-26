@@ -65,43 +65,47 @@ namespace Code.Player
             
         }
 
+        private void GetWeaponDataCopyFromPlayerPrefs()
+        {
+           var path = PlayerPrefs.GetString(ApplyWeaponForPlayer.WEAPON_KEY);
+           var weaponData = Instantiate(Resources.Load<WeaponData>(path));
+           if (weaponData != null) firstWeaponData = weaponData;
+
+        }
+
         private void CreateWeapon()
         {
+            firstWeaponData = Instantiate(firstWeaponData);
             var weapon = WeaponFactory.Get("SimplePlayerWeapon") as PlayerWeapon;
             if (weapon == null) throw new Exception("Weapon Casting Went Wrong!");
             weapon.player = this;
+            GetWeaponDataCopyFromPlayerPrefs();
             weapon.data = firstWeaponData;
             _firstWeapon = weapon;
-            // AddAttachment(WeaponDecoratorType.Choke); Działa
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
-            // LevelUpAttachment(WeaponDecoratorType.Choke);
             
             
         }
 
 
-        private void LevelUpAttachment(WeaponDecoratorType type)
+        public void LevelUpAttachment(WeaponDecoratorType type)
         {
-            WeaponDecorator.GetAttachmentOfType<PlayerWeapon>(_firstWeapon, type).Level++;
+            var deco =WeaponDecorator.GetAttachmentOfType<PlayerWeapon>(_firstWeapon, type);
+            if (deco != null) deco.Level++;
         }
         
         
-        private void AddAttachment(WeaponDecoratorType type)
+        public void AddAttachment(WeaponDecoratorType type)
         {
             switch (type)
             {
                 case WeaponDecoratorType.Choke:
                     _firstWeapon = new ChokeDecorator(_firstWeapon);
-                    
+                    break;
+                case WeaponDecoratorType.Scope:
+                    _firstWeapon = new ScopeDecorator(_firstWeapon);
+                    break;
+                case WeaponDecoratorType.Barrel:
+                    _firstWeapon = new BarrelDecorator(_firstWeapon);
                     break;
                 default:
                     throw new Exception("Invalid Attachment");
@@ -126,7 +130,7 @@ namespace Code.Player
 
         private void HandleAttack()
         {
-            var closestTarget = PhysicsUtils.GetClosestTarget(rb.position, 15, LayerMask.GetMask("Mobs"), new List<string>(){"Enemy"});
+            var closestTarget = PhysicsUtils.GetClosestTarget(rb.position, firstWeaponData.attackRange, LayerMask.GetMask("Mobs"), new List<string>(){"Enemy"});
             if (closestTarget.collider != null)
             {
                 var target = closestTarget.collider.GetComponent<Target>();

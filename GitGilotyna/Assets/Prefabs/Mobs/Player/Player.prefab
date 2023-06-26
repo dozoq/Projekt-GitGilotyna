@@ -515,9 +515,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7417324518423123381}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetOrUpdateAttachment
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Code.Events.SelectAttachmentEvent, Scripts
+      objectReference: {fileID: 0}
+    - target: {fileID: 8347245921065307971, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+      propertyPath: onLevelUp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+--- !u!1 &2373132721495626919 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3577407098783409751, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}
+  m_PrefabInstance: {fileID: 1245965951382876912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7417324518423123381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373132721495626919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01836dda394485887ff208c1e006bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleUpgradeCount: 3
+  _levelUpHandler: {fileID: 0}
 --- !u!4 &4862863892105227240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5924155028673206552, guid: 6257b4ff94ab70141ba37d60a3080b4f, type: 3}

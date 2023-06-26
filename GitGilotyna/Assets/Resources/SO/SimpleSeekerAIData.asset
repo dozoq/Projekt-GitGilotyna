@@ -15,7 +15,7 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  nextWaypointDistance: 3
+  nextWaypointDistance: 1
   maxChildrenCount: 5
   speed: 5
   maxRandomPathDistance: 50

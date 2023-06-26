@@ -10,6 +10,21 @@ namespace Code.Enemy.WeaponTypes.WeaponDecorators
         public WeaponData data { get; set; }
         public  IWeapon weapon { get; private set; }
         public  WeaponDecoratorType type { get; set; }
+
+        public static string GetResourceFromType(WeaponDecoratorType type)
+        {
+            switch (type)
+            {
+                case WeaponDecoratorType.Choke:
+                    return "Choke";
+                case WeaponDecoratorType.Barrel:
+                    return "Barrel";
+                case WeaponDecoratorType.Scope:
+                    return "Scope";
+                default:
+                    return String.Empty;
+            }
+        }
         public int Level
         {
             get { return _level;} 
@@ -57,6 +72,6 @@ namespace Code.Enemy.WeaponTypes.WeaponDecorators
 
     public enum WeaponDecoratorType
     {
-        Choke, Silencer
+        Choke, Scope, Barrel
     }
 }
