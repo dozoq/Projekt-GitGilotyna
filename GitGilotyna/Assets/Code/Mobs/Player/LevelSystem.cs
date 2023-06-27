@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ namespace Code.Player
         [SerializeField] private float experienceNeededForFirstLevel = 100;
         [SerializeField] private float levelRequirementsExponential = 1f;
         [SerializeField] private float level = 1;
+        [SerializeField] private UnityEvent<GameObject> onLevelUp;
         private float experienceNeeded;
 
         private void Start()
@@ -42,6 +44,7 @@ namespace Code.Player
         private void LevelUp()
         {
             level++;
+            onLevelUp?.Invoke(gameObject);
             _lvlCounter.text = level.ToString();
             experienceAmount -= experienceNeeded;
             experienceNeeded = experienceNeededForFirstLevel * Mathf.Pow(level, levelRequirementsExponential);
