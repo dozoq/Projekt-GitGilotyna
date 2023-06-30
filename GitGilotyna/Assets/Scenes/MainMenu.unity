@@ -2780,7 +2780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quests:
-  - {fileID: 11400000, guid: f656ab70f07114b4887925dd53ce359f, type: 2}
+  - {fileID: 11400000, guid: a444213f1553cbd4baf911aab46302fb, type: 2}
   MissionSlot1: {fileID: 1337021858}
   MissionSlot2: {fileID: 187985423}
   MissionSlot3: {fileID: 1724328005}
