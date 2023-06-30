@@ -71,6 +71,7 @@ namespace Code.General
         private void OnEnable()
         {
             GetComponent<RandomTimeInvoker>().enabled = SceneManager.GetActiveScene().buildIndex != 0;
+            _remainingCount = 0;
         }
 
         private void OnApplicationQuit()
