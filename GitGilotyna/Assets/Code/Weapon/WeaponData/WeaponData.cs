@@ -11,5 +11,6 @@ namespace Code.Weapon.WeaponData
         public float  attackFrequency;        
         public float attackRange;
         public List<WeaponDecoratorType> possibleAttachments;
+        public string fileName;
     }
 }
