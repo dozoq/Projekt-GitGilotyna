@@ -5854,18 +5854,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305539622434453206, guid: a1bed4c375c642e4487de16ae28a9823, type: 3}
-      propertyPath: onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 305539622434453206, guid: a1bed4c375c642e4487de16ae28a9823, type: 3}
-      propertyPath: onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayMusicEvent, Scripts
-      objectReference: {fileID: 0}
-    - target: {fileID: 305539622434453206, guid: a1bed4c375c642e4487de16ae28a9823, type: 3}
-      propertyPath: onPickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 305539622434453207, guid: a1bed4c375c642e4487de16ae28a9823, type: 3}
       propertyPath: m_Name
       value: SmallExpAndCash (1)
