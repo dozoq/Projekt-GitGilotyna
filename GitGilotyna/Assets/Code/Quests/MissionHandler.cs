@@ -23,7 +23,7 @@ public class MissionHandler : MonoBehaviour
 
     private void GenerateRandomMission(GameObject missionSlot)
     {
-        var randomMission = Random.Range(0, _quests.Count - 1);
+        var randomMission = Random.Range(0, 10000)%_quests.Count;
         missionSlot.GetComponent<Button>().onClick.AddListener(() =>
         {
             SceneManager.LoadScene(_quests[randomMission].scene);

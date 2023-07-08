@@ -29,6 +29,7 @@ namespace Code.Enemy
         [SerializeField, ComponentReferenceInspector] private Transform      spriteTransform;
         [SerializeField] private EnemyContext   enemyCtx;
         [SerializeField] private GameObject lootBag;
+        private Animator _animator;
         private                  AIPath         path;
         private                  DirectionRotor rotor;
         private                  AIType         ai;
@@ -45,6 +46,7 @@ namespace Code.Enemy
             ai.Start();
             InvokeRepeating(nameof(AIRepeating), 0f, AIInvokeRepeatTime);
             GameManager.instance.remainingCount++;
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void SetupSharedData()
@@ -68,8 +70,20 @@ namespace Code.Enemy
         // Update is called once per frame
         void FixedUpdate()
         {
-            rotor.SetDirectionByFlippingSprite(spriteTransform, path.desiredVelocity.x);
+            rotor.SetDirectionByFlippingSprite(spriteTransform, ai.velocity.x);
             ai.Process();
+        }
+
+        private void Update()
+        {
+            SendDataToAnimator();
+        }
+
+        private void SendDataToAnimator()
+        {
+            _animator.SetFloat("StrifeSpeed",Mathf.Abs(ai.velocity.x));
+            _animator.SetFloat("ForwardSpeed",Mathf.Abs(ai.velocity.y));
+            _animator.SetBool("PointsDown",ai.velocity.x>0);
         }
 
         public void MakeDead()

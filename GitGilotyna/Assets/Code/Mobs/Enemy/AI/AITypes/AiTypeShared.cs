@@ -7,7 +7,7 @@ namespace Code.Enemy.AITypes
 {
     public  abstract partial class AIType : IFactoryData
     {
-        
+        public Vector2 velocity { get; private set; }
         public abstract string    Name { get; }
         /// <summary>
         /// Shared context of AI data
@@ -127,6 +127,7 @@ namespace Code.Enemy.AITypes
         {
             Vector2 direction = ((Vector2)_ctx.path.vectorPath[_ctx.currentWaypoint] - _ctx.rigidbody2D.position)
                 .normalized;
+            velocity = direction;
             return direction * (_ctx.aiData.speed * Time.fixedDeltaTime);
         }
         

@@ -150,7 +150,7 @@ namespace Code.Player
             OnMove.Invoke();
             float modifier = 1.0f;
             if (PlayerPrefs.HasKey(SkillType.SPEED.ToString()))
-                modifier += 100.0f / PlayerPrefs.GetInt(SkillType.SPEED.ToString());
+                modifier += 0.01f / PlayerPrefs.GetInt(SkillType.SPEED.ToString());
             _moveVector = ctx.ReadValue<Vector2>();
             _moveVector.x *= modifier;
         }
