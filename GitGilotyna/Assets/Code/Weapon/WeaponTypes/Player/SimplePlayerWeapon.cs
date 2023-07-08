@@ -20,7 +20,7 @@ namespace Code.Weapon.WeaponTypes.Player
             float modifier = 1.0f;
             if (PlayerPrefs.HasKey(SkillType.ATTACK.ToString()))
             {
-                modifier += 100.0f / PlayerPrefs.GetInt(SkillType.ATTACK.ToString());
+                modifier += 0.01f * PlayerPrefs.GetInt(SkillType.ATTACK.ToString());
             }
             gameObject.GetComponent<Bullet>().Initialize("Enemy", (int)(weaponData.attackDamage* modifier));
             var force = (target.transform.position - position).normalized * (Time.fixedDeltaTime * weaponData.speed);

@@ -19,10 +19,13 @@ namespace Code.Mobs
 
         private void Start()
         {
+            float modifier = 1f;
             if (type == TargetType.PLAYER && PlayerPrefs.HasKey(SkillType.HEALTH.ToString()))
             {
-                MaxHealth *= 1.0f + PlayerPrefs.GetInt(SkillType.HEALTH.ToString()) / 100f;
+                modifier += 0.01f + PlayerPrefs.GetInt(SkillType.HEALTH.ToString());
             }
+
+            MaxHealth *= modifier;
             health = MaxHealth;
             deadable = (IDeadable)gameObject.GetComponentInParent(typeof(IDeadable));
         }
@@ -33,16 +36,16 @@ namespace Code.Mobs
             if (type == TargetType.PLAYER)
             {     
                 if (PlayerPrefs.HasKey(SkillType.ARMOR.ToString()))
-                    modifier += PlayerPrefs.GetInt(SkillType.ARMOR.ToString()) / 100f;
+                    modifier += 0.01f * PlayerPrefs.GetInt(SkillType.ARMOR.ToString());
             }
             else
             {
                 canvas.gameObject.SetActive(true);
             }
+            health -= amount/modifier;
             healthUI.fillAmount = health / MaxHealth;
 
 
-            health -= amount/modifier;
             OnDamage.Invoke(amount);
             if(health <= 0) deadable.MakeDead();
         }
