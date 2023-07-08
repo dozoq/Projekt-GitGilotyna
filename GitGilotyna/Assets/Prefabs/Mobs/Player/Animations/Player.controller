@@ -344,7 +344,7 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: ForwardSpeed
     m_EventTreshold: 0.5
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: PointsDown
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
