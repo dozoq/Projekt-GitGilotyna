@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2b52793f9ee384091d90333d7f8831, type: 3}
   m_Name: twoja stara
   m_EditorClassIdentifier: 
-  Name: Twoja stara
+  Name: Mission I
   scene: 2

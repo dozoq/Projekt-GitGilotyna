@@ -292,7 +292,7 @@ Transform:
   - {fileID: 6363812145782320118}
   - {fileID: 5197948443365040479}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6363812145159654261
 Rigidbody2D:
@@ -379,7 +379,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 2.13
-  pickNextWaypointDist: 1.2
+  pickNextWaypointDist: 0.5
   endReachedDistance: 0.2
   alwaysDrawGizmos: 1
   slowWhenNotFacingTarget: 1
