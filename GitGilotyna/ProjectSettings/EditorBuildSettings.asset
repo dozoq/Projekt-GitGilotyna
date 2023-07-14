@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/StraightGoBackAndForth.unity
+    path: Assets/Scenes/CircleOfDoom.unity
     guid: 09d1f207b54c4354687dc0831003d649
+  - enabled: 1
+    path: Assets/Scenes/CrossFind3.unity
+    guid: efd8bb308d12d3a448397f1874a93bb9
+  - enabled: 1
+    path: Assets/Scenes/BackN4th.unity
+    guid: 3673a679c51db4440a792b2529cadd90
+  - enabled: 1
+    path: Assets/Scenes/CircleOfHope.unity
+    guid: ee5a92b6e22a3b64bab92b8f13bc8020
   m_configObjects: {}
