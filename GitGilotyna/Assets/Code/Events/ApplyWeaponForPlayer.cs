@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Code.Weapon.WeaponData;
@@ -11,6 +12,12 @@ public class ApplyWeaponForPlayer : MonoBehaviour
     [SerializeField] private List<GameObject> siblings;
     [SerializeField] private Color selectedColor = Color.green;
     [SerializeField] private Color deselectedColor = Color.black;
+    [SerializeField] private bool isDefault = false;
+
+    private void Start()
+    {
+        if(isDefault) SaveWeaponOnClick();
+    }
 
     public void SaveWeaponOnClick()
     {

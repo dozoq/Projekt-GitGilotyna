@@ -1094,6 +1094,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5228845519347232175, guid: b5bfb437446b9ee48890698e76f74dc4, type: 3}
   m_PrefabInstance: {fileID: 1338604927}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &120541781 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3326299519774402476, guid: 3f5f887665b930b4baf98bf2f528da29, type: 3}
+  m_PrefabInstance: {fileID: 3326299520861979957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &128326272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14107,11 +14112,11 @@ PrefabInstance:
     - target: {fileID: 1089066308635335907, guid: 980f1f59449939d46997fa54507589a6, type: 3}
       propertyPath: canvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 120541781}
     - target: {fileID: 1089066308635335907, guid: 980f1f59449939d46997fa54507589a6, type: 3}
       propertyPath: healthUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1780556608}
     - target: {fileID: 7106065167968206259, guid: 980f1f59449939d46997fa54507589a6, type: 3}
       propertyPath: _slider
       value: 
@@ -16265,6 +16270,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b5bfb437446b9ee48890698e76f74dc4, type: 3}
+--- !u!114 &1780556608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3326299519363079890, guid: 3f5f887665b930b4baf98bf2f528da29, type: 3}
+  m_PrefabInstance: {fileID: 3326299520861979957}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785868538
 GameObject:
   m_ObjectHideFlags: 0

@@ -679,7 +679,7 @@ RectTransform:
   m_Father: {fileID: 852834922}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.0002078414}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -992,6 +992,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 284612775}
+        m_TargetAssemblyTypeName: SoundSystem, Scripts
+        m_MethodName: PlaySfx
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Reload
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &117684472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,6 +1022,7 @@ MonoBehaviour:
   - {fileID: 432729534}
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  isDefault: 1
 --- !u!1 &145734053
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,6 +3155,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 284612775}
+        m_TargetAssemblyTypeName: SoundSystem, Scripts
+        m_MethodName: PlaySfx
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Reload
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &405756085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3160,6 +3185,7 @@ MonoBehaviour:
   - {fileID: 432729534}
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  isDefault: 0
 --- !u!1 &432729534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,6 +3343,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 284612775}
+        m_TargetAssemblyTypeName: SoundSystem, Scripts
+        m_MethodName: PlaySfx
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Reload
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &432729541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,6 +3373,7 @@ MonoBehaviour:
   - {fileID: 117684465}
   selectedColor: {r: 0, g: 1, b: 0, a: 1}
   deselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  isDefault: 0
 --- !u!1 &450801288
 GameObject:
   m_ObjectHideFlags: 0
@@ -4993,8 +5032,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 22}
+  m_SizeDelta: {x: 0, y: -44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579172234
 MonoBehaviour:
@@ -7303,7 +7342,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1661865927}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.6252941
+  m_Size: 0.5994118
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7977,7 +8016,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 106782665}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99979216
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10185,7 +10224,7 @@ RectTransform:
   m_Father: {fileID: 1475829008}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.3747059}
+  m_AnchorMin: {x: 0, y: 0.4005882}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -11275,7 +11314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03356c97232a6084b9bf95eeaa6f146b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipName: Click
+  clipName: Reload
 --- !u!1 &1883461777
 GameObject:
   m_ObjectHideFlags: 0
@@ -13024,6 +13063,26 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: bglibrary.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: fxlibrary.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: bglibrary.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 623825f50628a05489b3614118734f48, type: 3}
+    - target: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: fxlibrary.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43f3c488abea2a34fa26ff208fcb6099, type: 3}
+    - target: {fileID: 3296822887858647200, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
+      propertyPath: fxlibrary.Array.data[11].name
+      value: Reload
+      objectReference: {fileID: 0}
     - target: {fileID: 3296822887858647202, guid: 6d6c70099482edf44a1efe9873f9cb94, type: 3}
       propertyPath: m_RootOrder
       value: 1

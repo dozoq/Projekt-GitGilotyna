@@ -12,11 +12,21 @@ public class PlayMusicEvent : MonoBehaviour
 
     private void Start()
     {
-        _soundSystem = GameManager.instance.soundSystem;
+        
     }
 
     public void Play()
     {
-        _soundSystem.PlaySfx(clipName);
+        if(!_soundSystem) _soundSystem  = GameManager.instance.soundSystem;
+        try
+        {
+            _soundSystem.PlaySfx(clipName);
+
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e + clipName);
+            throw;
+        }
     }
 }
