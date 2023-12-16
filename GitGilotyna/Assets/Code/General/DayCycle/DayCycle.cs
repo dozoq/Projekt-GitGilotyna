@@ -49,7 +49,19 @@ namespace Code.General
 
         private void RefreshTimer()
         {
-            timer.text = (timeUntilDawn-_actualTime).ToString("F");
+            timer.text = RemapTime(timeUntilDawn-_actualTime);
+        }
+
+        private string RemapTime(float time)
+        {
+            int wholeNumber = (int)Math.Floor(time);
+            int decimalPoint = (int)((time % 1) * 100);
+            int seconds = (int)Remap(decimalPoint, 0, 100, 0, 60);
+            return $"{wholeNumber}:{seconds}";
+        }
+        
+        private float Remap (float value, float from1, float to1, float from2, float to2) {
+            return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
 

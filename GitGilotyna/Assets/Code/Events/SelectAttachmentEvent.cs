@@ -47,13 +47,13 @@ namespace Code.Events
         {
             if (ListOfObtainedAttachments.Count == 0) return GetNewAttachment();
             return ListOfObtainedAttachments[
-                Random.Range(0, ListOfObtainedAttachments.Count - 1)];
+                (Random.Range(0, 10000)%ListOfObtainedAttachments.Count)];
         }
 
         private WeaponDecoratorType GetNewAttachment()
         {
             return CopyOfListWithPossibleWeaponAttachments[
-                Random.Range(0, CopyOfListWithPossibleWeaponAttachments.Count - 1)];
+                (Random.Range(0, 10000)%CopyOfListWithPossibleWeaponAttachments.Count)];
         }
 
         private void Init(GameObject go)

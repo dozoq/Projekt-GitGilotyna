@@ -3,6 +3,11 @@ using Code.General.States.StateFactory;
 using Code.Player.States.StateFactory;
 using Code.Utilities;
 using MySql.Data.MySqlClient;
+#if ENABLE_CLOUD_SERVICES
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Core.Environments;
+#endif
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,9 +55,26 @@ namespace Code.General
         private IState<GameManager> _menuState, _playState;
         private StateContext<IState<GameManager>, GameManager> _stateContext;
 
-        protected override void Awake()
+        
+            
+        
+        protected override async void Awake()
         {
             base.Awake();
+            var options = new InitializationOptions();
+
+            #if ENABLE_CLOUD_SERVICES
+            options.SetEnvironmentName("dev");
+            await UnityServices.InitializeAsync(options);
+            try
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            }
+            catch (AuthenticationException ex)
+            {
+                
+            }
+            #endif
             _sessionStartTime = DateTime.Now;
             _stateContext = new StateContext<IState<GameManager>, GameManager>(this);
             _menuState = GameStateFactory.Get("MenuState");
