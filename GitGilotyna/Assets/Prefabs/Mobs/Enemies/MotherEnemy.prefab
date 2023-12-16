@@ -5160,7 +5160,7 @@ MonoBehaviour:
   OnDamage:
     m_PersistentCalls:
       m_Calls: []
-  hitEffect: {fileID: 2732572324752404394}
+  hitEffect: {fileID: 0}
 --- !u!1 &1738627592770422166
 GameObject:
   m_ObjectHideFlags: 0

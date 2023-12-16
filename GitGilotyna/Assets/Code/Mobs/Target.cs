@@ -49,10 +49,13 @@ namespace Code.Mobs
             }
             health -= amount/modifier;
             healthUI.fillAmount = health / MaxHealth;
-            var rotation = hitEffect.transform.rotation;
-            rotation.eulerAngles = directionOfImpact;
-            //hitEffect.transform.rotation = rotation;
-            hitEffect.Play();
+            if (hitEffect != null)
+            {
+                var rotation = hitEffect.transform.rotation;
+                rotation.eulerAngles = directionOfImpact;
+                //hitEffect.transform.rotation = rotation;
+                hitEffect.Play();
+            }
 
 
             OnDamage.Invoke(amount);
