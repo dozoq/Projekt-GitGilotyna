@@ -10044,6 +10044,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6257657684707002035}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMove:
     m_PersistentCalls:
       m_Calls:
@@ -15303,7 +15315,7 @@ PrefabInstance:
     - target: {fileID: 8449382002324630381, guid: 6109420b0b7cd5b4d98d0930f6fd043e, type: 3}
       propertyPath: hitEffect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4576375678846124895}
     - target: {fileID: 8449382002324630381, guid: 6109420b0b7cd5b4d98d0930f6fd043e, type: 3}
       propertyPath: OnDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
