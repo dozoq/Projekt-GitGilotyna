@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6168276056845257325
 SpriteRenderer:
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 81707997
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bfeab8d869ef26a46bdf38d03a480bb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c9e296a7ee1e974791788c97cd50414, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
