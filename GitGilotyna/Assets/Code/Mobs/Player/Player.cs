@@ -7,6 +7,10 @@ using Code.Player.States.StateFactory;
 using Code.Utilities;
 using Code.Weapon.WeaponData;
 using Code.Weapon.WeaponTypes.Player;
+using Unity.Services.Analytics;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
+using Unity.Services.Core.Environments;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -42,11 +46,25 @@ namespace Code.Player
             _attackTimer = new Timer(firstWeaponData.attackFrequency, () => _readyForAttack = true);
         }
 
-        private void InitializeSubSystems()
+        private async void InitializeSubSystems()
         {
             InitializeStates();
             _rotor = new DirectionRotor();
             AssignStates();
+            #if ENABLE_CLOUD_SERVICES
+                            
+                        var options = new InitializationOptions();
+                        options.SetEnvironmentName("dev");
+                        await UnityServices.InitializeAsync(options);
+                        try
+                        {
+                            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                        }
+                        catch (AuthenticationException ex)
+                        {
+                                        
+                        }
+            #endif
         }
 
         private void AssignStates()
@@ -157,7 +175,18 @@ namespace Code.Player
 
         public void MakeDead()
         {
-            Debug.Log("Dead");
+            #if ENABLE_CLOUD_SERVICES_ANALYTICS
+                        AnalyticsService.Instance.CustomData("LevelEnd", new Dictionary<string, object>()
+                        {
+                            {
+                                "WinFlag", false
+                            },
+                            {
+                                "WeaponPicked", PlayerPrefs.GetString(ApplyWeaponForPlayer.WEAPON_SHORT_KEY)
+                            }
+                        });
+                        AnalyticsService.Instance.Flush();
+            #endif
             _stateContext.Transition(_deadState);
         }
     }

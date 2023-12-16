@@ -8,6 +8,7 @@ using Unity.Services.Core;
 using Unity.Services.Core.Environments;
 using UnityEngine;
 #if ENABLE_CLOUD_SERVICES_ANALYTICS
+using Unity.Services.Analytics;
 using UnityEngine.Analytics;            
 #endif
 using UnityEngine.SceneManagement;
@@ -53,11 +54,16 @@ public class MissionHandler : MonoBehaviour
         {
             SceneManager.LoadScene(_quests[randomMission].scene);
             #if ENABLE_CLOUD_SERVICES_ANALYTICS
-            Debug.Log("Event Pushed");
-            Analytics.CustomEvent("LevelBegin", new Dictionary<string, object>()
+            AnalyticsService.Instance.CustomData("LevelBegin", new Dictionary<string, object>()
             {
-                { "LevelName", _quests[randomMission].Name}
+                {
+                    "LevelName", _quests[randomMission].Name
+                },
+                {
+                    "WeaponPicked", PlayerPrefs.GetString(ApplyWeaponForPlayer.WEAPON_SHORT_KEY)
+                }
             });
+            AnalyticsService.Instance.Flush();
             #endif
         });
         missionSlot.GetComponentInChildren<TMP_Text>().text = _quests[randomMission].Name;
