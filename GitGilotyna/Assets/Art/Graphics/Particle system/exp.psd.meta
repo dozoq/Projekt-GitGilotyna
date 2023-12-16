@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -105,7 +105,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: exp_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 88
+        width: 432
+        height: 364
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae09caa49e403324fb16e1e4be5f6b9d
+      internalID: -1111418085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exp_5
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 91
+        width: 438
+        height: 367
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f87880e37d79df4194792d755003245
+      internalID: 116283441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: exp_7
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 91
+        width: 428
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ea2abe6d2f3dda41aca16a79f166fe1
+      internalID: 61042385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -116,7 +179,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      exp_15: 297155608
+      exp_9: 389239470
+      exp_16: 518572412
+      exp_8: -525444987
+      exp_14: 1926797162
+      exp_10: 2131998398
+      exp_3: -1111418085
+      exp_1: 268115558
+      exp_6: -1433951760
+      exp_5: 116283441
+      exp_13: 1208616412
+      exp_2: -1684572623
+      exp_11: -1422093127
+      exp_0: 823220283
+      exp_4: 785049379
+      exp_7: 61042385
+      exp_12: -748154892
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

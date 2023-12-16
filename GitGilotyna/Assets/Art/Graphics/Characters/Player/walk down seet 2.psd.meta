@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -165,7 +165,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: walk down seet 2_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 5
+        width: 395
+        height: 495
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91412b4a5eb3d2445b270df0263973a1
+      internalID: 1169915891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk down seet 2_1
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 5
+        width: 395
+        height: 495
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45d151c841fd5d43bb3e58c4fb7d9db
+      internalID: 1577667209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk down seet 2_2
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 5
+        width: 395
+        height: 495
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d6b2af889e8b14f8644618bdfe87e2
+      internalID: -1310807946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: walk down seet 2_3
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 5
+        width: 395
+        height: 495
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d6ee10c1bc9d948b240efc0b4b1864
+      internalID: 1309062005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -176,7 +260,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      walk down seet 2_3: 1309062005
+      walk down seet 2_2: -1310807946
+      walk down seet 2_1: 1577667209
+      walk down seet 2_0: 1169915891
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
