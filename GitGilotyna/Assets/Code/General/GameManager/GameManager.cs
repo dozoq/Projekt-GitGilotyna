@@ -3,6 +3,7 @@ using Code.General.States.StateFactory;
 using Code.Player.States.StateFactory;
 using Code.Utilities;
 using MySql.Data.MySqlClient;
+using Unity.Services.Analytics;
 #if ENABLE_CLOUD_SERVICES
 using Unity.Services.Authentication;
 using Unity.Services.Core;

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ApplyWeaponForPlayer : MonoBehaviour
 {
     public static readonly string WEAPON_KEY = "WEAPON_KEY";
+    public static readonly string WEAPON_SHORT_KEY = "WEAPON_SHORT_KEY";
     [SerializeField] private WeaponData weapon;
     [SerializeField] private List<GameObject> siblings;
     [SerializeField] private Color selectedColor = Color.green;
@@ -22,6 +23,7 @@ public class ApplyWeaponForPlayer : MonoBehaviour
     public void SaveWeaponOnClick()
     {
         PlayerPrefs.SetString(WEAPON_KEY, $"SO/{weapon.fileName}");
+        PlayerPrefs.SetString(WEAPON_SHORT_KEY, weapon.fileName);
         ChangeOutlineToSelected();
     }
 
