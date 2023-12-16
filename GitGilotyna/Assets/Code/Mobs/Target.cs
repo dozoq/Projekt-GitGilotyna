@@ -51,7 +51,7 @@ namespace Code.Mobs
             healthUI.fillAmount = health / MaxHealth;
             var rotation = hitEffect.transform.rotation;
             rotation.eulerAngles = directionOfImpact;
-            hitEffect.transform.rotation = rotation;
+            //hitEffect.transform.rotation = rotation;
             hitEffect.Play();
 
 

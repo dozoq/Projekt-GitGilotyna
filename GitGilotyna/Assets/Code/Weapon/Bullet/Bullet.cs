@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             var hit = collider.GetComponent<Target>();
             if (hit != null)
             {
-                hit.TakeDamage(damage, MapVelocityToHitDirection());
+                hit.TakeDamage(damage);
                 Destroy(gameObject);
             }
             else
@@ -46,7 +46,6 @@ public class Bullet : MonoBehaviour
     {
         float angle =
             Mathf.Cos(rb.velocity.x / Mathf.Pow(rb.velocity.x,2) + Mathf.Pow(rb.velocity.y,2))*360;
-        Debug.Log(angle);
 
         if (rb.velocity.x > 0) return new Vector3(0, 0, angle);
         return new Vector3(0, 0, 0);
